@@ -23,10 +23,15 @@ public class allInOne {
             if ( choice == 1 ) {
                 
                 manager.addResident(scan);
+
             } else if ( choice == 2 ) {
 
                 manager.residentRecords(scan);
+ 
+            } else if ( choice == 3 ) {
 
+                manager.blotterRecords(scan);
+                
             }
 
 
