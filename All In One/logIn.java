@@ -1,11 +1,10 @@
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.Scanner;
 
 public class logIn extends DatabaseConnection {
     public boolean login(Scanner scan) {
         try {
-            connect();
+            sql();
             System.out.print("Enter Username >> ");
             String username = scan.nextLine();
             System.out.print("Enter Password >> ");
@@ -19,14 +18,16 @@ public class logIn extends DatabaseConnection {
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                System.out.println("\nLogin Successful");
+                System.out.println();
+                System.out.println("Login Successful");
                 System.out.println();
                 rs.close();
                 stmt.close();
                 close();
                 return true;
             } else {
-                System.out.println("\nInvalid Username or Password");
+                System.out.println();
+                System.out.println("Invalid Username or Password");
             }
 
             rs.close();
