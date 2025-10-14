@@ -16,41 +16,189 @@ public class Methods extends DatabaseConnection {
             String firstName = scan.nextLine();
             System.out.print("Enter Middle Name >> ");
             String middleName = scan.nextLine();
-            System.out.print("Enter Suffix >> ");
-            String suffix = scan.nextLine();
-            System.out.print("Male or Female >> ");
-            String sex = scan.nextLine();
+            
+            System.out.println("Select Suffix");
+            System.out.println("1.None  2.Jr  3.Sr  4.III  5.IV  6.V  Other");
+            System.out.print(">> ");
+            String suffix;
+            String suffixChoice = scan.nextLine();
+            if ( suffixChoice.equals("1")) {
+                suffix = "None";
+            } else if ( suffixChoice.equals("2")) {
+                suffix = "Jr.";
+            } else if ( suffixChoice.equals("3")) {
+                suffix = "Sr.";
+            } else if ( suffixChoice.equals("4")) {
+                suffix = "III";
+            } else if ( suffixChoice.equals("5")) {
+                suffix = "IV";
+            } else if ( suffixChoice.equals("6")) {
+                suffix = "V";
+            } else {
+                System.out.print("Other: ");
+                suffix = scan.nextLine();
+            }
+            
+            System.out.println("Select Sex");
+            System.out.println("1.Male  2.Female");
+            System.out.print(">> ");
+            String sex;
+            String sexChoice = scan.nextLine();
+            if ( sexChoice.equals("1")) {
+                sex = "Male";
+            } else {
+                sex = "Female";
+            }
+           
             System.out.print("Birthdate (YYYY-MM-DD) >> ");
             String birthdate = scan.nextLine();
+            
             System.out.print("Enter Age >> ");
             int age = scan.nextInt();
             scan.nextLine();
-            System.out.print("Status (Single, Married, etc.) >> ");
-            String civilStatus = scan.nextLine();
+            
+            System.out.println("Select Civil Status");
+            System.out.println("1.Separated  2.Married  3.Widowed  4.Single");
+            System.out.print(">> ");
+            String civilStatus;
+            String status = scan.nextLine();
+            if ( status.equals("1")) {
+                civilStatus = "Separated";
+            } else if ( status.equals("2")) {
+                civilStatus = "Married";
+            } else if ( status.equals("3")) {
+                civilStatus = "Widowed";
+            } else {
+                civilStatus = "Single";
+            }
+            
             System.out.print("Enter Sitio >> ");
             String sitio = scan.nextLine();
+            
             System.out.print("Enter Occupation >> ");
             String occupation = scan.nextLine();
+            
             System.out.print("Enter Contact Number >> ");
             String contactNumber = scan.nextLine();
+            
             System.out.print("Enter Email >> ");
             String email = scan.nextLine();
-            System.out.print("Voter Status (Registered/Not Registered) >> ");
-            String voterStatus = scan.nextLine();
+            
+            System.out.print("Select Voter Status: ");
+            System.out.println("1.Registered  2.Not Registered");
+            System.out.print(">> ");
+            String voterStatus;
+            String voter = scan.nextLine();
+            if ( voter.equals("1")) {
+                voterStatus = "Registered";
+            } else {
+                voterStatus = "Not Registered";
+            }
+           
             System.out.print("Number of People in Household >> ");
             String numHousehold = scan.nextLine();
-            boolean senior = age >= 60;
-            System.out.print("Deceased? (1 = yes, 0 = no) >> ");
-            String deceased = scan.nextLine();
-            System.out.print("Religion >> ");
-            String religion = scan.nextLine();
-            System.out.print("PWD? (yes or no) >> ");
-            String pwdInput = scan.nextLine();
-            String PWD = pwdInput.equalsIgnoreCase("yes") ? "1" : "0";
-            System.out.print("Blood Type >> ");
-            String bloodType = scan.nextLine();
+            
+            String senior;
+            if ( age >= 60 ) {
+                senior = "Yes";
+            } else {
+                senior = "No";
+            }
+        
+            
+            System.out.print("Select Condition: ");
+            System.out.println("1.Deceased  2. Alive");
+            System.out.print(">> ");
+            String conditions = scan.nextLine();
+            String deceased;
+            if ( conditions.equals("1")) {
+                deceased = "Deceased";
+            } else {
+                deceased = "Alive";
+            }
+            
+            System.out.println("Select Religion");
+            System.out.println("1.Roman Catholic  2.Islam  3.Iglesia Ni Cristo  4. Born Again   Others");
+            System.out.print(">> ");
+            String religionChoice = scan.nextLine();
+            String religion;
+            if ( religionChoice.equals("1")) {
+                religion = "Roman Catholic";
+            } else if ( religionChoice.equals("2")) {
+                religion = "Islam";
+            } else if ( religionChoice.equals("3")) {
+                religion = "Iglesia Ni Cristo";
+            } else if ( religionChoice.equals("4")) {
+                religion = "Born Again";
+            } else {
+                System.out.print("Other: ");
+                religion = scan.nextLine();
+            }
 
-            String insert = "INSERT INTO residents_details (last_name, first_name, middle_name, suffix, sex, birthdate, age, civil_status, sitio, occupation, contact_number, email_address, voter_status, no_household, senior, deceased, religion, PWD, blood_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            System.out.print("Is the Resident a PWD?: ");
+            System.out.println("Y or N");
+            System.out.print(">> ");
+            String pwdInput = scan.nextLine();
+            String PWD = pwdInput.equalsIgnoreCase("Y") ? "Yes" : "No";
+            
+            System.out.println("Select Blood Type");
+            System.out.println("1.A   2.B   3.AB    4.O");
+            System.out.println("5.A+  6.B+  7.AB+   8.O+");
+            System.out.println("9.A-  10.B- 11.AB-  12.O-");
+            System.out.print(">> ");
+            String blood = scan.nextLine();
+            String bloodType;
+
+            if ( blood.equals("1")) {
+                bloodType = "A";
+            } else if ( blood.equals("2")) {
+                bloodType = "B";
+            } else if ( blood.equals("3")) {
+                bloodType = "AB";
+            } else if ( blood.equals("4")) {
+                bloodType = "O";
+            } else if ( blood.equals("5")) {
+                bloodType = "A+";
+            } else if ( blood.equals("6")) {
+                bloodType = "B+";
+            } else if ( blood.equals("7")) {
+                bloodType = "AB+";
+            } else if ( blood.equals("8")) {
+                bloodType = "O+";
+            } else if ( blood.equals("9")) {
+                bloodType = "A-";
+            } else if ( blood.equals("10")) {
+                bloodType = "B-";
+            } else if ( blood.equals("11")) {
+                bloodType = "AB-";
+            } else if ( blood.equals("12")) {
+                bloodType = "O-";
+            } else {
+                bloodType = "N/A";
+            }
+
+            System.out.println("Select Educational Attainment");
+            System.out.println("1.Elementary Level  2.Elementary Graduate  3.High School Level  4.High School Graduate  5.Senior High School Level  Others");
+            System.out.print(">> ");
+            String education;
+            String educAttainment = scan.nextLine();
+            if ( educAttainment.equals("1")) {
+                education = "Elementary Level";
+            } else if ( educAttainment.equals("2")) {
+                education = "Elementary Graduate";
+            } else if ( educAttainment.equals("3")) {
+                education = "High School Level";
+            } else if ( educAttainment.equals("4")) {
+                education = "High School Graduate";
+            } else if ( educAttainment.equals("5")) {
+                education = "Senior High School Level";
+            } else {
+                System.out.print("Others: ");
+                education = scan.nextLine();
+            }
+
+            String insert = "INSERT INTO residents_details (last_name, first_name, middle_name, suffix, sex, birthdate, age, civil_status, sitio, occupation, contact_number, email_address, voter_status, no_household, senior, conditions, religion, PWD, blood_type, educational_attainment)"
+            + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement pstmt = con.prepareStatement(insert);
             pstmt.setString(1, lastName);
@@ -67,11 +215,13 @@ public class Methods extends DatabaseConnection {
             pstmt.setString(12, email);
             pstmt.setString(13, voterStatus);
             pstmt.setString(14, numHousehold);
-            pstmt.setBoolean(15, senior);
+            pstmt.setString(15, senior);
             pstmt.setString(16, deceased);
             pstmt.setString(17, religion);
             pstmt.setString(18, PWD);
             pstmt.setString(19, bloodType);
+            pstmt.setString(20, education);
+
 
             int rows = pstmt.executeUpdate();
 
@@ -139,16 +289,16 @@ public class Methods extends DatabaseConnection {
                 pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE sitio = ?");
                 pstmt.setString(1, value);
             } else if ( look == 6 ) {
-                System.out.println("Enter Civil Status >> ");
+                System.out.println("Enter Voter Status >> ");
                 String value = scan.nextLine();
-                pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE civil_status = ?");
+                pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE voter_status = ?");
                 pstmt.setString(1, value);
             }else if ( look == 7 ) {
                 pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE age >= 60");
             } else if ( look == 8 ) {
-                pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE deceased = 1");
+                pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE conditions = 'Deceased'");
             } else if ( look == 10 ) {
-                pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE PWD = 1");
+                pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE PWD = 'Yes'");
             } else if ( look == 0 ) {
                 System.out.print("Enter First Name >> ");
                 String firstName = scan.nextLine();
@@ -189,10 +339,10 @@ public class Methods extends DatabaseConnection {
                     System.out.println("Email Address: " + rs.getString("email_address"));
                     System.out.println("Voter Status: " + rs.getString("voter_status"));
                     System.out.println("Number of Household: " + rs.getString("no_household"));
-                    System.out.println("Senior: " + rs.getBoolean("senior"));
-                    System.out.println("Deceased: " + rs.getBoolean("deceased"));
+                    System.out.println("Senior: " + rs.getString("senior"));
+                    System.out.println("Conditions: " + rs.getString("conditions"));
                     System.out.println("Religion: " + rs.getString("religion"));
-                    System.out.println("PWD: " + rs.getBoolean("PWD"));
+                    System.out.println("PWD: " + rs.getString("PWD"));
                     
                     
                 }
