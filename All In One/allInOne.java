@@ -32,6 +32,9 @@ public class allInOne {
 
                 manager.blotterRecords(scan);
                 
+            } else if ( choice == 4 ) {
+
+                manager.newReport(scan);
             }
 
 
