@@ -35,6 +35,13 @@ public class allInOne {
             } else if ( choice == 4 ) {
 
                 manager.newReport(scan);
+
+            } else if ( choice == 5 ) {
+
+                manager.makeCertificate(scan);
+
+            } else {
+                System.out.println("Invalid");
             }
 
 
