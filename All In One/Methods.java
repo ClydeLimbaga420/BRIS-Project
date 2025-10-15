@@ -433,4 +433,138 @@ public class Methods extends DatabaseConnection {
             scan.close();
         }
     }
+
+    public void newReport (Scanner scan) {
+
+        try {
+            
+            sql();
+
+            System.out.println("Report A Case");
+            System.out.print("Enter First Name of Complainant >> ");
+            String complainantFirst = scan.nextLine();
+
+            System.out.print("Enter Middle Name of Complainant (Leave Blank if None) >> ");
+            String complainantMiddle = scan.nextLine();
+
+            System.out.print("Enter Last Name of Complainant >> ");
+            String complainantLast = scan.nextLine();
+
+            System.out.print("Enter the Age of Complainant >> ");
+            String complainantAge = scan.nextLine();
+
+            System.out.println("Select Civil Status");
+            System.out.println("1.Separated  2.Married  3.Widowed  4.Single");
+            System.out.print(">> ");
+            String civilStatusComplainant;
+            String status = scan.nextLine();
+            if ( status.equals("1")) {
+                civilStatusComplainant = "Separated";
+            } else if ( status.equals("2")) {
+                civilStatusComplainant = "Married";
+            } else if ( status.equals("3")) {
+                civilStatusComplainant = "Widowed";
+            } else {
+                civilStatusComplainant = "Single";
+            }
+
+            System.out.print("Enter Complainant Address >> ");
+            String complainantAddress = scan.nextLine();
+
+            System.out.print("Enter the First Name of the Respondent that is Blottered >> ");
+            String complainedFirst = scan.nextLine();
+
+            System.out.print("Enter the Middle Name of the Respondent that is Blottered (Leave Blank if None)>> ");
+            String complainedMiddle = scan.nextLine();
+
+            System.out.print("Enter the Last Name of the Respondent thats is Blottered >> ");
+            String complainedLast = scan.nextLine();
+
+            System.out.print("Enter the Age of the Respondent Complained >> ");
+            String complainedAge = scan.nextLine();
+
+            System.out.println("Select Civil Status");
+            System.out.println("1.Separated  2.Married  3.Widowed  4.Single");
+            System.out.print(">> ");
+            String civilStatusBlottered;
+            String blotteredStatus = scan.nextLine();
+            if ( blotteredStatus.equals("1")) {
+                civilStatusBlottered = "Separated";
+            } else if ( blotteredStatus.equals("2")) {
+                civilStatusBlottered = "Married";
+            } else if ( blotteredStatus.equals("3")) {
+                civilStatusBlottered = "Widowed";
+            } else {
+                civilStatusBlottered = "Single";
+            }
+            
+            System.out.print("Enter the Address of the Respondent Complained >> ");
+            String complainedAddress = scan.nextLine();
+
+            System.out.print("Enter Statement of Complain >> ");
+            String statementOfComplain = scan.nextLine();
+
+            System.out.print("Enter the Action Taken >> ");
+            String actionTaken = scan.nextLine();
+
+            System.out.print("Enter Location of Incidence >> ");
+            String locationOfIncidence = scan.nextLine();
+
+            System.out.print("Enter the Date of Complain ( YYYY-MM-DD ) >> ");
+            String dateOfComplain = scan.nextLine();
+
+            System.out.println("Select Status");
+            System.out.println("1.Active  2.Resolved  3.Referred  4.Pending");
+            System.out.print(">> ");
+            String blotter = scan.nextLine();
+            String blotterStatus;
+            if ( blotter.equals("1")) {
+                blotterStatus = "Active";
+            } else if ( blotter.equals("2")) {
+                blotterStatus = "Resolved";
+            } else if ( blotter.equals("3")) {
+                blotterStatus = "Referred";
+            } else {
+                blotterStatus = "Pending";
+            }
+            
+            String insertQuery = "INSERT INTO blotter (complainant_first_name, complainant_middle_name, complainant_last_name, complainant_age, complainant_civil_status, complainant_address, blottered_first_name, blottered_middle_name, blottered_last_name, complained_age, complained_civil_status, complained_address, statement_of_complain, action_taken, location_of_incidence, date_of_complain, blotter_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement pstmt = con.prepareStatement(insertQuery);
+            pstmt.setString(1, complainantFirst);
+            pstmt.setString(2, complainantMiddle);
+            pstmt.setString(3, complainantLast);
+            pstmt.setString(4, complainantAge);
+            pstmt.setString(5, civilStatusComplainant);
+            pstmt.setString(6, complainantAddress);
+            pstmt.setString(7, complainedFirst);
+            pstmt.setString(8, complainedMiddle);
+            pstmt.setString(9, complainedLast);
+            pstmt.setString(10, complainedAge);
+            pstmt.setString(11, civilStatusBlottered);
+            pstmt.setString(12, complainedAddress);
+            pstmt.setString(13, statementOfComplain);
+            pstmt.setString(14, actionTaken);
+            pstmt.setString(15, locationOfIncidence);
+            pstmt.setString(16, dateOfComplain);
+            pstmt.setString(17,blotterStatus);
+
+
+        
+            int rows = pstmt.executeUpdate();
+
+            if (rows > 0) {
+                System.out.println("Blotter Filed Successfully");
+            } else {
+                System.out.println("Not Successful");
+            }
+
+            pstmt.close();
+            con.close();
+        }catch(Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scan.close();
+        }
+
+    }
 }
