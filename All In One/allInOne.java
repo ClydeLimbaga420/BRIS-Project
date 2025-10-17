@@ -1,12 +1,25 @@
 import java.util.Scanner;
 
+
 public class allInOne {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         logIn login = new logIn();
         Methods manager = new Methods();
+        boolean loggedIn = false;
+        
 
-        boolean loggedIn = login.login(scan);
+        System.out.println("1. Login");
+        System.out.println("2. Change Username or Password");
+        System.out.print(">> ");
+        String log = scan.nextLine();
+
+        if ( log.equals("1")) {
+            loggedIn = login.login(scan);
+            
+        } else if ( log.equals("2")) {
+            login.change(scan);
+        }
 
         if (loggedIn) {
             
