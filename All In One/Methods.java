@@ -323,7 +323,7 @@ public class Methods extends DatabaseConnection {
                 while (rs.next()) {
                     found = true;
                     count++;
-                    System.out.println("");
+                    System.out.println();
                     
                     System.out.println("Residents ID: " + rs.getInt("residents_id"));
                     System.out.println("Last Name: " + rs.getString("last_name"));
@@ -344,6 +344,8 @@ public class Methods extends DatabaseConnection {
                     System.out.println("Conditions: " + rs.getString("conditions"));
                     System.out.println("Religion: " + rs.getString("religion"));
                     System.out.println("PWD: " + rs.getString("PWD"));
+                    System.out.println("Blood Type" + rs.getString("blood_type"));
+                    System.out.println("Educational Attainment" + rs.getString("educational_attainment"));
                     
                 }
                 System.out.println("");
@@ -766,6 +768,7 @@ public class Methods extends DatabaseConnection {
             System.out.println("1. Edit Profile");
             System.out.print(">> ");
             String edit = scan.nextLine();
+            System.out.println();
 
             if ( edit.equals("1")) {
                         
@@ -791,6 +794,7 @@ public class Methods extends DatabaseConnection {
                     System.out.println("17. PWD Condition");
                     System.out.println("18. Blood Type");
                     System.out.println("19. Educational Attainment");
+                    System.out.println("20. Exit");
                     System.out.print(">> ");
                     String editInfo = scan.nextLine();
 
@@ -1005,12 +1009,10 @@ public class Methods extends DatabaseConnection {
 
                         if ( success > 0 ) {
                             System.out.println("Changed Succesfully");
-                            ch.close();
-                            con.close();
+                            
                         } else {
                             System.out.println("Error");
-                            ch.close();
-                            con.close();
+                            
                         }
                     } else {
                     String editQuery = "UPDATE residents_details SET " + change + " = ? WHERE first_name = ? AND middle_name = ? and last_name = ? ";
@@ -1023,18 +1025,31 @@ public class Methods extends DatabaseConnection {
 
                     if ( success > 0 ) {
                         System.out.println("Changed Succesfully");
-                        ch.close();
-                        con.close();
+                        
                     } else {
                         System.out.println("Error");
-                        ch.close();
-                        con.close();
+                        
                     }
                     }
+
+                    System.out.println("1. Edit More?");
+                    System.out.println("2. Exit");
+                    System.out.print(">> ");
+                    String editMore = scan.nextLine();
+
+                    if (editMore.equals("1")) {
+                        moreEdits = true;
+                    } else {
+                        moreEdits = false;
+                    }
+
                 }
+                
+                
             } else {
                 System.out.println();
-            }   
+            } con.close(); 
+             
         }catch(Exception e) {
             System.out.println("Error: " + e.getMessage());
         } finally {
