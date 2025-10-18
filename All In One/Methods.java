@@ -808,12 +808,37 @@ public class Methods extends DatabaseConnection {
                         changeProfile = scan.nextLine();
                     } else if (editInfo.equals("4")) {
                         change = "suffix";
-                        System.out.print("Enter New Suffix >> ");
-                        changeProfile = scan.nextLine();
+                        System.out.println("Select New Suffix:");
+                        System.out.println("1.None  2.Jr  3.Sr  4.III  5.IV  6.V  Other");
+                        System.out.print(">> ");
+                        String suffixChoice = scan.nextLine();
+                        if ( suffixChoice.equals("1")) {
+                            changeProfile = "None";
+                        } else if ( suffixChoice.equals("2")) {
+                            changeProfile = "Jr.";
+                        } else if ( suffixChoice.equals("3")) {
+                            changeProfile = "Sr.";
+                        } else if ( suffixChoice.equals("4")) {
+                            changeProfile = "III";
+                        } else if ( suffixChoice.equals("5")) {
+                            changeProfile = "IV";
+                        } else if ( suffixChoice.equals("6")) {
+                            changeProfile = "V";
+                        } else {
+                            System.out.print("Other: ");
+                            changeProfile = scan.nextLine();
+                        }
                     } else if (editInfo.equals("5")) {
                         change = "sex";
-                        System.out.print("Enter New Sex >> ");
-                        changeProfile = scan.nextLine();
+                        System.out.print("Select New Sex: ");
+                        System.out.println("1.Male  2.Female");
+                        System.out.print(">> ");
+                        String sexChoice = scan.nextLine();
+                        if ( sexChoice.equals("1")) {
+                            changeProfile = "Male";
+                        } else {
+                            changeProfile = "Female";
+                        }
                     } else if (editInfo.equals("6")) {
                         change = "birthdate";
                         System.out.print("Enter New Birthdate (YYYY-MM-DD) >> ");
@@ -824,8 +849,20 @@ public class Methods extends DatabaseConnection {
                         changeProfile = scan.nextLine();
                     } else if (editInfo.equals("8")) {
                         change = "civil_status";
-                        System.out.print("Enter New Civil Status >> ");
-                        changeProfile = scan.nextLine();
+                        System.out.println("Select New Civil Status:");
+                        System.out.println("1.Separated  2.Married  3.Widowed  4.Single");
+                        System.out.print(">> ");
+                        String status = scan.nextLine();
+                        if ( status.equals("1")) {
+                            changeProfile = "Separated";
+                        } else if ( status.equals("2")) {
+                            changeProfile = "Married";
+                        } else if ( status.equals("3")) {
+                            changeProfile = "Widowed";
+                        } else {
+                            changeProfile = "Single";
+                        }
+                        
                     } else if (editInfo.equals("9")) {
                         change = "sitio";
                         System.out.print("Enter New Sitio >> ");
@@ -844,32 +881,117 @@ public class Methods extends DatabaseConnection {
                         changeProfile = scan.nextLine();
                     } else if (editInfo.equals("13")) {
                         change = "voter_status";
-                        System.out.print("Enter New Voter Status >> ");
-                        changeProfile = scan.nextLine();
+                        System.out.println("Select New Voter Status");
+                        System.out.println("1.Registered  2.Not Registered");
+                        System.out.print(">> ");
+                        String voter = scan.nextLine();
+                        if ( voter.equals("1")) {
+                            changeProfile = "Registered";
+                        } else {
+                            changeProfile = "Not Registered";
+                        }
+                        
                     } else if (editInfo.equals("14")) {
                         change = "no_household";
                         System.out.print("Enter New Number of People in Household >> ");
                         changeProfile = scan.nextLine();
                     } else if (editInfo.equals("15")) {
                         change = "conditions";
-                        System.out.print("Enter New Condition >> ");
+                        System.out.println("Select New Condition: ");
+                        System.out.println("1.Deceased  2. Alive");
+                        System.out.print(">> ");
+                        String conditions = scan.nextLine();
+                        if ( conditions.equals("1")) {
+                            changeProfile = "Deceased";
+                        } else {
+                            changeProfile = "Alive";
+                        }
                         changeProfile = scan.nextLine();
                     } else if (editInfo.equals("16")) {
                         change = "religion";
-                        System.out.print("Enter New Religion >> ");
+                        System.out.println("Select New Religion: ");
+                        System.out.println("1.Roman Catholic  2.Islam  3.Iglesia Ni Cristo  4. Born Again   Others");
+                        System.out.print(">> ");
+                        String religionChoice = scan.nextLine();
+                        if ( religionChoice.equals("1")) {
+                            changeProfile = "Roman Catholic";
+                        } else if ( religionChoice.equals("2")) {
+                            changeProfile = "Islam";
+                        } else if ( religionChoice.equals("3")) {
+                            changeProfile = "Iglesia Ni Cristo";
+                        } else if ( religionChoice.equals("4")) {
+                            changeProfile = "Born Again";
+                        } else {
+                            System.out.print("Other: ");
+                            changeProfile = scan.nextLine();
+                        }
                         changeProfile = scan.nextLine();
                     } else if (editInfo.equals("17")) {
                         change = "PWD";
-                        System.out.print("Is A PWD? >> ");
-                        changeProfile = scan.nextLine();
+                        System.out.println("Is A PWD? (Y or N) >> ");
+                        String pwdInput = scan.nextLine();
+                        changeProfile = pwdInput.equalsIgnoreCase("Y") ? "Yes" : "No";
+                      
                     } else if (editInfo.equals("18")) {
                         change = "blood_type";
-                        System.out.print("Enter New Blood Type >> ");
+                        System.out.println("Select New Blood Type:");
+                        System.out.println("1.A   2.B   3.AB    4.O");
+                        System.out.println("5.A+  6.B+  7.AB+   8.O+");
+                        System.out.println("9.A-  10.B- 11.AB-  12.O-");
+                        System.out.print(">> ");
+                        String blood = scan.nextLine();
+                      
+
+                        if ( blood.equals("1")) {
+                            changeProfile = "A";
+                        } else if ( blood.equals("2")) {
+                            changeProfile = "B";
+                        } else if ( blood.equals("3")) {
+                            changeProfile = "AB";
+                        } else if ( blood.equals("4")) {
+                            changeProfile = "O";
+                        } else if ( blood.equals("5")) {
+                            changeProfile = "A+";
+                        } else if ( blood.equals("6")) {
+                            changeProfile = "B+";
+                        } else if ( blood.equals("7")) {
+                            changeProfile = "AB+";
+                        } else if ( blood.equals("8")) {
+                            changeProfile = "O+";
+                        } else if ( blood.equals("9")) {
+                            changeProfile = "A-";
+                        } else if ( blood.equals("10")) {
+                            changeProfile = "B-";
+                        } else if ( blood.equals("11")) {
+                            changeProfile = "AB-";
+                        } else if ( blood.equals("12")) {
+                            changeProfile = "O-";
+                        } else {
+                            changeProfile = "N/A";
+                        }
                         changeProfile = scan.nextLine();
                     } else if (editInfo.equals("19")) {
                         change = "educational_attainment";
-                        System.out.print("Enter New Educational Attaiment >> ");
-                        changeProfile = scan.nextLine();
+                        System.out.println("Enter New Educational Attaiment:");
+                        System.out.println("1.Elementary Level  2.Elementary Graduate  3.High School Level  4.High School Graduate  5.Senior High School Level  Others");
+                        System.out.print(">> ");
+                       
+                        String educAttainment = scan.nextLine();
+                        if ( educAttainment.equals("1")) {
+                            changeProfile = "Elementary Level";
+                        } else if ( educAttainment.equals("2")) {
+                            changeProfile = "Elementary Graduate";
+                        } else if ( educAttainment.equals("3")) {
+                            changeProfile = "High School Level";
+                        } else if ( educAttainment.equals("4")) {
+                            changeProfile = "High School Graduate";
+                        } else if ( educAttainment.equals("5")) {
+                            changeProfile = "Senior High School Level";
+                        } else {
+                            System.out.print("Others: ");
+                            changeProfile = scan.nextLine();
+                        }
+                            
                     }
 
                     if (editInfo.equals("6")) {
