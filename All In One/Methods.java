@@ -302,14 +302,14 @@ public class Methods extends DatabaseConnection {
                 String firstName = scan.nextLine();
                 System.out.print("Enter Middle Name (Put 'None' if 'None') >> ");
                 String middleName = scan.nextLine();
-                System.out.print("Enter First Name >> ");
+                System.out.print("Enter Last Name >> ");
                 String lastName = scan.nextLine();
                 pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE first_name = ? AND middle_name = ? AND last_name = ?");
                 pstmt.setString(1, firstName);
                 pstmt.setString(2, middleName);
                 pstmt.setString(3, lastName);
             }else {
-                System.out.println("Invalid option or not yet implemented.");
+                System.out.println("Invalid");
             }
 
             if (pstmt != null) {
@@ -342,13 +342,16 @@ public class Methods extends DatabaseConnection {
                     System.out.println("Religion: " + rs.getString("religion"));
                     System.out.println("PWD: " + rs.getString("PWD"));
                     
-                    
                 }
                 System.out.println("");
                 System.out.println("Resident Found (" + count + ")");
 
                 if (!found) {
                     System.out.println("No Residents Found.");
+                }
+
+                if ( look == 0 && found ) {
+                    edit(scan);
                 }
 
                 rs.close();
@@ -750,4 +753,55 @@ public class Methods extends DatabaseConnection {
             scan.close();
         }
     }
+
+    public void edit(Scanner scan) {
+        try {
+            sql();
+            boolean moreEdits = true;
+            System.out.println("1. Edit Profile");
+            System.out.print(">> ");
+            String edit = scan.nextLine();
+
+            if ( edit.equals("1")) {
+                        
+                while(moreEdits) {
+
+                    System.out.println("Select What to Edit");
+                    System.out.println("1. Last Name");
+                    System.out.println("2. First Name");
+                    System.out.println("3. Middle Name");
+                    System.out.println("4. Suffix");
+                    System.out.println("5. Sex");
+                    System.out.println("6. Birthdate");
+                    System.out.println("7. Age");
+                    System.out.println("8. Civil Status");
+                    System.out.println("9. Sitio");
+                    System.out.println("10. Occupation");
+                    System.out.println("11. Contact Number");
+                    System.out.println("12. Email");
+                    System.out.println("13. Voter Status");
+                    System.out.println("14. Number of Person in Household");
+                    System.out.println("15. Condition");
+                    System.out.println("16. Religion");
+                    System.out.println("17. PWD Condition");
+                    System.out.println("18. Blood Type");
+                    System.out.println("19. Educational Attainment");
+                    System.out.print(">> ");
+                    String editInfo = scan.nextLine();
+
+                    if (editInfo.equals("1")) {
+
+                    }
+
+
+                }
+            } else {
+                System.out.println();
+            }   
+        }catch(Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        } finally {
+            scan.close();
+        }
+    } 
 }
