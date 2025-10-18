@@ -6,6 +6,7 @@ public class allInOne {
         Scanner scan = new Scanner(System.in);
         logIn login = new logIn();
         Methods manager = new Methods();
+        certsAndBlotter records = new certsAndBlotter();
         boolean loggedIn = false;
         
 
@@ -21,7 +22,7 @@ public class allInOne {
             login.change(scan);
         }
 
-        if (loggedIn) {
+        while (loggedIn) {
             
             System.out.println("Choose");
             System.out.println("1. Add New Resident");
@@ -29,6 +30,7 @@ public class allInOne {
             System.out.println("3. Blotter Records");
             System.out.println("4. Report Case");
             System.out.println("5. Clerance/Certificate");
+            System.out.println("6. Log Out");
             System.out.print(">> ");
             int choice = scan.nextInt();
             scan.nextLine();
@@ -43,22 +45,26 @@ public class allInOne {
  
             } else if ( choice == 3 ) {
 
-                manager.blotterRecords(scan);
+                records.blotterRecords(scan);
                 
             } else if ( choice == 4 ) {
 
-                manager.newReport(scan);
+                records.newReport(scan);
 
             } else if ( choice == 5 ) {
 
-                manager.makeCertificate(scan);
+                records.makeCertificate(scan);
+
+            } else if ( choice == 6 ) {
+
+                loggedIn = false;
 
             } else {
                 System.out.println("Invalid");
             }
 
 
-
+            
         }
 
         scan.close();
