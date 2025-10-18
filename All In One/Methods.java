@@ -372,6 +372,7 @@ public class Methods extends DatabaseConnection {
 
     public void edit(Scanner scan, String firstName, String middleName, String lastName) {
         try {
+            int changeAge = 0;
             sql();
             boolean moreEdits = true;
             String change = "";
@@ -461,7 +462,8 @@ public class Methods extends DatabaseConnection {
                     } else if (editInfo.equals("7")) {
                         change = "age";
                         System.out.print("Enter New Age >> ");
-                        changeProfile = scan.nextLine();
+                        changeAge = scan.nextInt();
+                        scan.nextLine();
                     } else if (editInfo.equals("8")) {
                         change = "civil_status";
                         System.out.println("Select New Civil Status:");
@@ -521,7 +523,7 @@ public class Methods extends DatabaseConnection {
                         } else {
                             changeProfile = "Alive";
                         }
-                        changeProfile = scan.nextLine();
+                        
                     } else if (editInfo.equals("16")) {
                         change = "religion";
                         System.out.println("Select New Religion: ");
@@ -540,7 +542,7 @@ public class Methods extends DatabaseConnection {
                             System.out.print("Other: ");
                             changeProfile = scan.nextLine();
                         }
-                        changeProfile = scan.nextLine();
+                        
                     } else if (editInfo.equals("17")) {
                         change = "PWD";
                         System.out.println("Is A PWD? (Y or N) >> ");
@@ -584,7 +586,7 @@ public class Methods extends DatabaseConnection {
                         } else {
                             changeProfile = "N/A";
                         }
-                        changeProfile = scan.nextLine();
+                        
                     } else if (editInfo.equals("19")) {
                         change = "educational_attainment";
                         System.out.println("Enter New Educational Attaiment:");
@@ -625,9 +627,35 @@ public class Methods extends DatabaseConnection {
                             System.out.println("Error");
                             
                         }
+                    } else if (editInfo.equals("7")){
+                        
+                        if ( changeAge >= 60 ) {
+                            changeProfile = "Yes";
+                        } else {
+                            changeProfile = "No";
+                        }
+                        String age = String.valueOf(changeAge);
+                        String editQuery = "UPDATE residents_details SET senior = ?, age = ? WHERE first_name = ? AND middle_name = ? and last_name = ? ";
+                        PreparedStatement ch = con.prepareStatement(editQuery);
+                    
+                        ch.setString(1, changeProfile);
+                        ch.setString(2, age);
+                        ch.setString(3, firstName);
+                        ch.setString(4, middleName);
+                        ch.setString(5, lastName);
+                        int success = ch.executeUpdate();
+    
+                        if ( success > 0 ) {
+                            System.out.println("Changed Succesfully");
+                            
+                        } else {
+                            System.out.println("Error");
+                            
+                        }
                     } else {
                     String editQuery = "UPDATE residents_details SET " + change + " = ? WHERE first_name = ? AND middle_name = ? and last_name = ? ";
                     PreparedStatement ch = con.prepareStatement(editQuery);
+                    
                     ch.setString(1, changeProfile);
                     ch.setString(2, firstName);
                     ch.setString(3, middleName);
@@ -663,8 +691,6 @@ public class Methods extends DatabaseConnection {
              
         }catch(Exception e) {
             System.out.println("Error: " + e.getMessage());
-        } finally {
-            scan.close();
-        }
+        } 
     } 
 }
