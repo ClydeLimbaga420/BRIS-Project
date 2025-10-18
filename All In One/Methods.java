@@ -2,6 +2,9 @@ import java.sql.*;
 import java.util.Scanner;
 
 public class Methods extends DatabaseConnection {
+    String firstName;
+    String middleName;
+    String lastName;
 
     public void addResident(Scanner scan) {
         try {
@@ -299,11 +302,11 @@ public class Methods extends DatabaseConnection {
                 pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE PWD = 'Yes'");
             } else if ( look == 0 ) {
                 System.out.print("Enter First Name >> ");
-                String firstName = scan.nextLine();
+                firstName = scan.nextLine();
                 System.out.print("Enter Middle Name (Put 'None' if 'None') >> ");
-                String middleName = scan.nextLine();
+                middleName = scan.nextLine();
                 System.out.print("Enter Last Name >> ");
-                String lastName = scan.nextLine();
+                lastName = scan.nextLine();
                 pstmt = con.prepareStatement("SELECT * FROM residents_details WHERE first_name = ? AND middle_name = ? AND last_name = ?");
                 pstmt.setString(1, firstName);
                 pstmt.setString(2, middleName);
@@ -351,7 +354,7 @@ public class Methods extends DatabaseConnection {
                 }
 
                 if ( look == 0 && found ) {
-                    edit(scan);
+                    edit(scan, firstName, middleName, lastName);
                 }
 
                 rs.close();
@@ -754,10 +757,12 @@ public class Methods extends DatabaseConnection {
         }
     }
 
-    public void edit(Scanner scan) {
+    public void edit(Scanner scan, String firstName, String middleName, String lastName) {
         try {
             sql();
             boolean moreEdits = true;
+            String change = "";
+            String changeProfile = "";
             System.out.println("1. Edit Profile");
             System.out.print(">> ");
             String edit = scan.nextLine();
@@ -765,7 +770,7 @@ public class Methods extends DatabaseConnection {
             if ( edit.equals("1")) {
                         
                 while(moreEdits) {
-
+                    
                     System.out.println("Select What to Edit");
                     System.out.println("1. Last Name");
                     System.out.println("2. First Name");
@@ -790,10 +795,120 @@ public class Methods extends DatabaseConnection {
                     String editInfo = scan.nextLine();
 
                     if (editInfo.equals("1")) {
-
+                        change = "last_name";
+                        System.out.print("Enter New Last Name >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("2")) {
+                        change = "first_name";
+                        System.out.print("Enter New First Name >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("3")) {
+                        change = "middle_name";
+                        System.out.print("Enter New Middle Name >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("4")) {
+                        change = "suffix";
+                        System.out.print("Enter New Suffix >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("5")) {
+                        change = "sex";
+                        System.out.print("Enter New Sex >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("6")) {
+                        change = "birthdate";
+                        System.out.print("Enter New Birthdate (YYYY-MM-DD) >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("7")) {
+                        change = "age";
+                        System.out.print("Enter New Age >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("8")) {
+                        change = "civil_status";
+                        System.out.print("Enter New Civil Status >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("9")) {
+                        change = "sitio";
+                        System.out.print("Enter New Sitio >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("10")) {
+                        change = "occupation";
+                        System.out.print("Enter New Occupation >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("11")) {
+                        change = "contact_number";
+                        System.out.print("Enter New Contact Number >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("12")) {
+                        change = "email_address";
+                        System.out.print("Enter New Email Address >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("13")) {
+                        change = "voter_status";
+                        System.out.print("Enter New Voter Status >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("14")) {
+                        change = "no_household";
+                        System.out.print("Enter New Number of People in Household >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("15")) {
+                        change = "conditions";
+                        System.out.print("Enter New Condition >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("16")) {
+                        change = "religion";
+                        System.out.print("Enter New Religion >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("17")) {
+                        change = "PWD";
+                        System.out.print("Is A PWD? >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("18")) {
+                        change = "blood_type";
+                        System.out.print("Enter New Blood Type >> ");
+                        changeProfile = scan.nextLine();
+                    } else if (editInfo.equals("19")) {
+                        change = "educational_attainment";
+                        System.out.print("Enter New Educational Attaiment >> ");
+                        changeProfile = scan.nextLine();
                     }
 
+                    if (editInfo.equals("6")) {
+                        String editQuery = "UPDATE residents_details SET " + change + " = ? WHERE first_name = ? AND middle_name = ? and last_name = ? ";
+                        PreparedStatement ch = con.prepareStatement(editQuery);
+                        ch.setDate(1, Date.valueOf(changeProfile));
+                        ch.setString(2, firstName);
+                        ch.setString(3, middleName);
+                        ch.setString(4, lastName);
+                        int success = ch.executeUpdate();
 
+                        if ( success > 0 ) {
+                            System.out.println("Changed Succesfully");
+                            ch.close();
+                            con.close();
+                        } else {
+                            System.out.println("Error");
+                            ch.close();
+                            con.close();
+                        }
+                    } else {
+                    String editQuery = "UPDATE residents_details SET " + change + " = ? WHERE first_name = ? AND middle_name = ? and last_name = ? ";
+                    PreparedStatement ch = con.prepareStatement(editQuery);
+                    ch.setString(1, changeProfile);
+                    ch.setString(2, firstName);
+                    ch.setString(3, middleName);
+                    ch.setString(4, lastName);
+                    int success = ch.executeUpdate();
+
+                    if ( success > 0 ) {
+                        System.out.println("Changed Succesfully");
+                        ch.close();
+                        con.close();
+                    } else {
+                        System.out.println("Error");
+                        ch.close();
+                        con.close();
+                    }
+                    }
                 }
             } else {
                 System.out.println();
