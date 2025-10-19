@@ -344,8 +344,8 @@ public class Methods extends DatabaseConnection {
                     System.out.println("Conditions: " + rs.getString("conditions"));
                     System.out.println("Religion: " + rs.getString("religion"));
                     System.out.println("PWD: " + rs.getString("PWD"));
-                    System.out.println("Blood Type" + rs.getString("blood_type"));
-                    System.out.println("Educational Attainment" + rs.getString("educational_attainment"));
+                    System.out.println("Blood Type: " + rs.getString("blood_type"));
+                    System.out.println("Educational Attainment: " + rs.getString("educational_attainment"));
                     
                 }
                 System.out.println("");
@@ -693,4 +693,31 @@ public class Methods extends DatabaseConnection {
             System.out.println("Error: " + e.getMessage());
         } 
     } 
+
+
+    public void updateData () {
+
+        try {
+
+            sql();
+
+            Statement stmt = con.createStatement();
+
+            int updated = stmt.executeUpdate("UPDATE residents_details SET age = TIMESTAMPDIFF(YEAR, birthdate, CURDATE()) WHERE conditions = 'alive'");
+            updated += stmt.executeUpdate("UPDATE residents_details SET senior = 'yes' WHERE age >= 60");
+
+
+
+            if ( updated > 0 ) {
+                System.out.println("Updated Succesfully");
+            } else {
+                System.out.println("Error");
+            }
+            stmt.close();
+            con.close();
+        }catch(Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+    }
 }
