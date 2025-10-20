@@ -44,6 +44,7 @@ public class certsAndBlotter extends DatabaseConnection {
                 }
                 System.out.println("Reason of Complaint #" + (count + 1) + ": " + rs.getString("statement_of_complain"));
                 System.out.println("Date of Complain: " + rs.getDate("date_of_complain"));
+                System.out.println("Officer in Charge: " + rs.getString("officer_in_charge"));
                 System.out.println();
                 count++;
             }
@@ -94,20 +95,6 @@ public class certsAndBlotter extends DatabaseConnection {
             System.out.print("Enter the Age of Complainant >> ");
             String complainantAge = scan.nextLine();
 
-            System.out.println("Select Civil Status");
-            System.out.println("1.Separated  2.Married  3.Widowed  4.Single");
-            System.out.print(">> ");
-            String civilStatusComplainant;
-            String status = scan.nextLine();
-            if ( status.equals("1")) {
-                civilStatusComplainant = "Separated";
-            } else if ( status.equals("2")) {
-                civilStatusComplainant = "Married";
-            } else if ( status.equals("3")) {
-                civilStatusComplainant = "Widowed";
-            } else {
-                civilStatusComplainant = "Single";
-            }
 
             System.out.print("Enter Complainant Address >> ");
             String complainantAddress = scan.nextLine();
@@ -124,21 +111,6 @@ public class certsAndBlotter extends DatabaseConnection {
             System.out.print("Enter the Age of the Respondent Complained >> ");
             String complainedAge = scan.nextLine();
 
-            System.out.println("Select Civil Status");
-            System.out.println("1.Separated  2.Married  3.Widowed  4.Single");
-            System.out.print(">> ");
-            String civilStatusBlottered;
-            String blotteredStatus = scan.nextLine();
-            if ( blotteredStatus.equals("1")) {
-                civilStatusBlottered = "Separated";
-            } else if ( blotteredStatus.equals("2")) {
-                civilStatusBlottered = "Married";
-            } else if ( blotteredStatus.equals("3")) {
-                civilStatusBlottered = "Widowed";
-            } else {
-                civilStatusBlottered = "Single";
-            }
-            
             System.out.print("Enter the Address of the Respondent Complained >> ");
             String complainedAddress = scan.nextLine();
 
@@ -168,26 +140,29 @@ public class certsAndBlotter extends DatabaseConnection {
             } else {
                 blotterStatus = "Pending";
             }
+
+            System.out.print("Officer in Charge >> ");
+            String officer = scan.nextLine();
             
-            String insertQuery = "INSERT INTO blotter (complainant_first_name, complainant_middle_name, complainant_last_name, complainant_age, complainant_civil_status, complainant_address, blottered_first_name, blottered_middle_name, blottered_last_name, complained_age, complained_civil_status, complained_address, statement_of_complain, action_taken, location_of_incidence, date_of_complain, blotter_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO blotter (complainant_first_name, complainant_middle_name, complainant_last_name, complainant_age, complainant_address, blottered_first_name, blottered_middle_name, blottered_last_name, complained_age, complained_address, statement_of_complain, action_taken, location_of_incidence, date_of_complain, blotter_status, officer_in_charge)" + 
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement pstmt = con.prepareStatement(insertQuery);
             pstmt.setString(1, complainantFirst);
             pstmt.setString(2, complainantMiddle);
             pstmt.setString(3, complainantLast);
             pstmt.setString(4, complainantAge);
-            pstmt.setString(5, civilStatusComplainant);
-            pstmt.setString(6, complainantAddress);
-            pstmt.setString(7, complainedFirst);
-            pstmt.setString(8, complainedMiddle);
-            pstmt.setString(9, complainedLast);
-            pstmt.setString(10, complainedAge);
-            pstmt.setString(11, civilStatusBlottered);
-            pstmt.setString(12, complainedAddress);
-            pstmt.setString(13, statementOfComplain);
-            pstmt.setString(14, actionTaken);
-            pstmt.setString(15, locationOfIncidence);
-            pstmt.setString(16, dateOfComplain);
-            pstmt.setString(17,blotterStatus);
+            pstmt.setString(5, complainantAddress);
+            pstmt.setString(6, complainedFirst);
+            pstmt.setString(7, complainedMiddle);
+            pstmt.setString(8, complainedLast);
+            pstmt.setString(9, complainedAge);
+            pstmt.setString(10, complainedAddress);
+            pstmt.setString(11, statementOfComplain);
+            pstmt.setString(12, actionTaken);
+            pstmt.setString(13, locationOfIncidence);
+            pstmt.setString(14, dateOfComplain);
+            pstmt.setString(15,blotterStatus);
+            pstmt.setString(16, officer);
 
 
         
@@ -361,7 +336,7 @@ public class certsAndBlotter extends DatabaseConnection {
                 ResultSet rs = pstmt.executeQuery();
 
                 boolean hasHistory = false;
-                //System.out.println("Certificate Id Certificate Name Purpose Date");
+                
                 while (rs.next()) {
                     hasHistory = true;
 
