@@ -9,18 +9,20 @@ public class allInOne {
         certsAndBlotter records = new certsAndBlotter();
         boolean loggedIn = false;
         boolean running = true;
+
+        
         
         while (running) {
         System.out.println();
         System.out.println("1. Login");
         System.out.println("2. Change Username or Password");
-        System.out.println("3. Update Data");
-        System.out.println("4. Exit");
+        System.out.println("3. Exit");
         System.out.print(">> ");
         String log = scan.nextLine();
 
         if ( log.equals("1")) {
             loggedIn = login.login(scan);
+            manager.updateData();
             while (loggedIn) {
                 System.out.println();
                 System.out.println("Choose");
@@ -67,8 +69,6 @@ public class allInOne {
             }
         } else if ( log.equals("2")) {
             login.change(scan);
-        } else if ( log.equals("3")) {
-            manager.updateData();
         } else {
             running = false;
         }
