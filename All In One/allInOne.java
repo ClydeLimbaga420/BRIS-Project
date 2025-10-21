@@ -30,8 +30,9 @@ public class allInOne {
                 System.out.println("2. Resident Records");
                 System.out.println("3. Blotter Records");
                 System.out.println("4. Report Case");
-                System.out.println("5. Clerance/Certificate");
-                System.out.println("6. Log Out");
+                System.out.println("5. Clearance/Certificate");
+                System.out.println("6. See Edit History");
+                System.out.println("7. Log Out");
                 System.out.print(">> ");
                 int choice = scan.nextInt();
                 scan.nextLine();
@@ -57,6 +58,10 @@ public class allInOne {
                     records.makeCertificate(scan);
     
                 } else if ( choice == 6 ) {
+
+                    manager.displayHistory();
+
+                } else if ( choice == 7 ) {
     
                     loggedIn = false;
     
