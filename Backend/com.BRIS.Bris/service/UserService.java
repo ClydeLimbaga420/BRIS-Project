@@ -1,7 +1,7 @@
-package com.BRIS.Bris.service;
+package com.BRIS.Login.service;
 
-import com.BRIS.Bris.entity.User;
-import com.BRIS.Bris.repository.UserRepository;
+import com.BRIS.Login.entity.User;
+import com.BRIS.Login.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
