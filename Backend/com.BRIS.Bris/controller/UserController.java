@@ -15,7 +15,7 @@ public class UserController {
 
     @GetMapping("/")
     public String loginPage() {
-        return "login"; // login.html
+        return "login"; // returns login.html
     }
 
     @PostMapping("/login")
@@ -26,16 +26,11 @@ public class UserController {
         User user = userService.login(username, password);
 
         if (user != null) {
-            model.addAttribute("user", user); // optional for homepage
-            return "redirect:/homepage";
+            model.addAttribute("username", user.getUsername());
+            return "homepage";
         } else {
             model.addAttribute("error", "Invalid username or password");
-            return "login";
+            return "login"; 
         }
-    }
-
-    @GetMapping("/homepage")
-    public String homePage(Model model) {
-        return "homepage"; // homepage.html
     }
 }
