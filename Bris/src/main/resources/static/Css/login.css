@@ -1,0 +1,82 @@
+
+body, html {
+    height:100%;
+    margin:0;
+    width:100%;
+    font-family:Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-image: url("https://www.gifgit.com/site-images/toolpage-images/gradient-tool-example1.jpg");
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center;
+  }
+
+  .Login {
+    background:#d3d3d3;
+  }
+
+  .LoginPage {
+    background:white;
+    padding:30px;
+    border-radius:10px;
+    text-align:center;
+    width:20%;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .LoginPage .intro h3 {
+    line-height:32%;
+    font-size:20.4px;
+    color:#1F2937;
+    margin-bottom:8%;
+  }
+
+  .LoginPage .intro h5{
+    line-height:24%;
+    font-size:13.6px;
+    color:#4B5563;
+    margin-top:20px;
+  }
+
+  label[for="username"],
+  label[for="password"] {
+    text-align:left;
+    display:flex;
+    font-size:11.9px;
+    color:#374151;
+    margin-bottom:10%;
+    line-height:20%;
+  }
+
+  .LoginPage .UserLog .user_input_box,
+  .LoginPage .UserLog .user_input_password {
+    width: 95%;
+    height:40px;
+    font-size: 16px;
+    border: 1.95px solid #ccc;
+    border-radius: 5px;
+    margin-top:10px;
+  }
+
+  input::placeholder {
+    text-indent:10%;
+
+  }
+
+
+  .LoginPage .UserLog .Button {
+    width:100%;
+    background:#2563EB;
+    color:#FFFFFF;
+    height:40px;
+    font-size:13.6px;
+    border-radius:5px;
+    border:2px ;
+    margin-bottom:35px;
+  }
+  .Button:hover {
+    cursor: pointer;
+  }
+

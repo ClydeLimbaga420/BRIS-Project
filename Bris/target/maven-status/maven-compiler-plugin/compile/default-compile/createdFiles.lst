@@ -1,0 +1,5 @@
+com\BRIS\Bris\entity\User.class
+com\BRIS\Bris\BrisApplication.class
+com\BRIS\Bris\controller\UserController.class
+com\BRIS\Bris\service\UserService.class
+com\BRIS\Bris\repository\UserRepository.class
