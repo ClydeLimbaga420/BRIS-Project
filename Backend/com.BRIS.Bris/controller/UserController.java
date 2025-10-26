@@ -15,7 +15,7 @@ public class UserController {
 
     @GetMapping("/")
     public String loginPage() {
-        return "login"; // returns login.html
+        return "login";
     }
 
     @PostMapping("/login")
