@@ -1,7 +1,7 @@
-package com.BRIS.Bris.controller;
+package com.BRIS.Login.controller;
 
-import com.BRIS.Bris.entity.User;
-import com.BRIS.Bris.service.UserService;
+import com.BRIS.Login.entity.User;
+import com.BRIS.Login.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +30,7 @@ public class UserController {
             return "homepage";
         } else {
             model.addAttribute("error", "Invalid username or password");
-            return "login"; 
+            return "login";
         }
     }
 }
