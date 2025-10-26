@@ -1,4 +1,4 @@
-package com.BRIS.Bris.entity;
+package com.BRIS.Login.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
