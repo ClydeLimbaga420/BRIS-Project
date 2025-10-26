@@ -1,4 +1,3 @@
-/* Full page setup */
 body, html {
     height: 100%;
     margin: 0;
@@ -13,7 +12,7 @@ body, html {
     background-position: center;
 }
 
-/* Login page container */
+
 .LoginPage {
     background: white;
     padding: 30px;
@@ -23,7 +22,7 @@ body, html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Intro text */
+
 .LoginPage .intro h3 {
     line-height: 1.2;
     font-size: 22px;
@@ -38,7 +37,7 @@ body, html {
     margin-top: 0;
 }
 
-/* Labels */
+
 .LoginPage label {
     text-align: left;
     display: block;
@@ -47,7 +46,7 @@ body, html {
     margin-bottom: 5px;
 }
 
-/* Input boxes */
+
 #loginForm input[type="text"],
 #loginForm input[type="password"] {
     width: 95%;
@@ -63,7 +62,7 @@ input::placeholder {
     color: #999;
 }
 
-/* Login button */
+
 #loginForm button {
     width: 100%;
     background: #2563EB;
@@ -80,7 +79,7 @@ input::placeholder {
     background: #1E40AF;
 }
 
-/* Error message styling */
+
 #loginForm p {
     margin-top: 10px;
     font-size: 13px;
