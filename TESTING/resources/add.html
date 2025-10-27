@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resident Added</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Resident Added Successfully</h2>
+    <p><strong>Name:</strong> <span th:text="${resident.name}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${resident.email}"></span></p>
+    <p><strong>Address:</strong> <span th:text="${resident.address}"></span></p>
+
+    <a th:href="@{/residents/add}">Add Another Resident</a>
+</body>
+</html>
