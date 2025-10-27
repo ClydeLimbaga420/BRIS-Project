@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/residents")
+@RequestMapping("/residents")
 @CrossOrigin(origins = "*") // Allow frontend access
 public class ResidentController {
 
