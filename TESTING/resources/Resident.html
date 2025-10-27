@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add Resident</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h2>Add New Resident</h2>
+    <form th:action="@{/residents/add}" th:object="${resident}" method="post">
+        <label>First Name:</label>
+        <input type="text" th:field="*{firstName}" required /><br/>
+
+        <label>Middle Name:</label>
+        <input type="text" th:field="*{middleName}" /><br/>
+
+        <label>Last Name:</label>
+        <input type="text" th:field="*{lastName}" required /><br/>
+
+        <label>Suffix:</label>
+        <input type="text" th:field="*{suffix}" /><br/>
+
+        <label>Age:</label>
+        <input type="number" th:field="*{age}" min="0" required /><br/>
+
+        <label>Gender:</label>
+        <select th:field="*{gender}">
+            <option value="">Select</option>
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+        </select><br/>
+
+        <label>Birthdate:</label>
+        <input type="date" th:field="*{birthdate}" /><br/>
+
+        <label>Civil Status:</label>
+        <select th:field="*{civilStatus}">
+            <option value="">Select</option>
+            <option>Single</option>
+            <option>Married</option>
+            <option>Widowed</option>
+            <option>Separated</option>
+        </select><br/>
+
+        <label>Occupation:</label>
+        <input type="text" th:field="*{occupation}" /><br/>
+
+        <label>Contact Number:</label>
+        <input type="text" th:field="*{contactNumber}" /><br/>
+
+        <label>Voter Status:</label>
+        <select th:field="*{voterStatus}">
+            <option value="">Select</option>
+            <option>Registered</option>
+            <option>Not Registered</option>
+        </select><br/>
+
+        <label>Email Address:</label>
+        <input type="email" th:field="*{emailAddress}" /><br/>
+
+        <label>Number of Household Members:</label>
+        <input type="number" th:field="*{numberOfHouseholdMembers}" min="1" /><br/>
+
+        <label>Religion:</label>
+        <input type="text" th:field="*{religion}" /><br/>
+
+        <label>Person with Disability (PWD):</label>
+        <input type="checkbox" th:field="*{pwd}" /><br/>
+
+        <label>Blood Type:</label>
+        <input type="text" th:field="*{bloodType}" /><br/>
+
+        <label>Educational Attainment:</label>
+        <input type="text" th:field="*{educationalAttainment}" /><br/>
+
+        <button type="submit">Add Resident</button>
+    </form>
+</body>
+</html>
