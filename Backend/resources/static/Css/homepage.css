@@ -91,10 +91,13 @@ body {
 
 #records {
   display:flex;
-  padding:60px 200px;
-  justify-content:space-around;
-  margin:0 ;
+  align-items: center;
+  padding:60px 110px;
+  justify-content:flex-start;
+  margin:0;
   gap:10%;
+  width: 1200px;
+  
 }
 
 #records1 {
@@ -135,7 +138,7 @@ body {
   justify-content: center;
   gap: 20px;
   background:#F9FAFB;
-
+   
   border-radius:20px;
   padding:20px;
   max-width:30px;
@@ -143,7 +146,7 @@ body {
   z-index:9px;
 }
 .icon img {
-  width: 40px;
-  height: 40px;
+  width: 40px;   
+  height: 40px;  
   object-fit: contain;
 }
