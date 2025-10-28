@@ -37,9 +37,12 @@ public class UserController {
     public String homepage() {
         return "homepage";
     }
-    @GetMapping("/userguide")
-    public String userguide() {
-        return "userguide";
+    @Controller
+    public class userGuide {
+        @GetMapping("/userguide")
+        public String userGuide() {
+            return "userGuide";
+        }
     }
     @Controller
     public class addResidentController {
@@ -48,5 +51,34 @@ public class UserController {
             return "newresident";
         }
     }
+    @Controller
+    public class residentsRecordsController {
+        @GetMapping("/residentsrecords")
+        public String residentsRecords() {
+            return "residentsrecords";
+        }
+    }
+    @Controller
+    public class blotterRecordsController {
+        @GetMapping("/blotterrecords")
+        public String blotterRecords() {
+            return "blotterrecords";
+        }
+    }
+    @Controller
+    public class reportCaseController {
+        @GetMapping("/reportcase")
+        public String reportCase() {
+            return "reportcase";
+        }
+    }
+    @Controller
+    public class certificatesController {
+        @GetMapping("/certificates")
+        public String certificates() {
+            return "certificates";
+        }
+    }
+
 
 }
