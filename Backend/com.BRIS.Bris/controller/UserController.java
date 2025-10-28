@@ -27,10 +27,26 @@ public class UserController {
 
         if (user != null) {
             model.addAttribute("username", user.getUsername());
-            return "homepage";
+            return "redirect:/homepage";
         } else {
             model.addAttribute("error", "Invalid username or password");
             return "login";
         }
     }
+    @GetMapping("/homepage")
+    public String homepage() {
+        return "homepage";
+    }
+    @GetMapping("/userguide")
+    public String userguide() {
+        return "userguide";
+    }
+    @Controller
+    public class addResidentController {
+        @GetMapping("/newresident")
+        public String newResident() {
+            return "newresident";
+        }
+    }
+
 }
