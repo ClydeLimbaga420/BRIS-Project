@@ -1,0 +1,82 @@
+body {
+  font-family: inter, sans-serif;
+  background-color: #f3f6f8;
+  margin: 0;
+  padding: 0 0 80px 0;
+
+}
+
+.header {
+  background-color: #007b9c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.header h2 {
+  margin: 0;
+  font-weight: normal;
+}
+.card {
+    width: 80%;
+    max-width: 800px;
+    background-color: white;
+    margin: 20px auto 80px;
+    padding: 30px;
+    margin-bottom: 60px;
+    border-radius: 10px;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+#backBtn {
+  background-color: #007b9c;
+  color: White;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#backBtn:hover {
+  background-color: #208AAE;
+}
+
+.content {
+  width: 80%;
+  margin: 20px auto;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px 100px;
+}
+
+.scroll-box {
+  height: 400px;
+  overflow-y: auto;
+  line-height: 1.6;
+  color: #333;
+  padding-right: 10px;
+}
+
+.scroll-box h3 {
+  text-align: left;
+  margin-top: 0;
+}
+
+.scroll-box p {
+  text-align: justify;
+}
+footer {
+  background-color: #1c2533;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-size: 14px;
+}
