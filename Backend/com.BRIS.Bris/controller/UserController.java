@@ -38,47 +38,55 @@ public class UserController {
         return "homepage";
     }
     @Controller
-    public class userGuide {
+    public class userGuideCon {
         @GetMapping("/userguide")
         public String userGuide() {
             return "userGuide";
         }
     }
     @Controller
-    public class addResidentController {
+    public class logOutCon {
+        @GetMapping("/login")
+        public String logout() {
+            return "login";
+        }
+    }
+    @Controller
+    public class addResidentCon {
         @GetMapping("/newresident")
         public String newResident() {
             return "newresident";
         }
     }
     @Controller
-    public class residentsRecordsController {
+    public class residentsRecordsCon {
         @GetMapping("/residentsrecords")
         public String residentsRecords() {
             return "residentsrecords";
         }
     }
     @Controller
-    public class blotterRecordsController {
+    public class blotterRecordsCon {
         @GetMapping("/blotterrecords")
         public String blotterRecords() {
             return "blotterrecords";
         }
     }
     @Controller
-    public class reportCaseController {
+    public class reportCaseCon {
         @GetMapping("/reportcase")
         public String reportCase() {
             return "reportcase";
         }
     }
     @Controller
-    public class certificatesController {
+    public class certificatesCon {
         @GetMapping("/certificates")
         public String certificates() {
             return "certificates";
         }
     }
+
 
 
 }
