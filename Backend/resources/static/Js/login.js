@@ -1,12 +1,12 @@
 const loginForm = document.getElementById("loginForm");
-const username = document.getElementById("username");
+const gmail = document.getElementById("gmail");
 const password = document.getElementById("password");
 
-username.addEventListener("focus", () => username.placeholder = "");
+gmail.addEventListener("focus", () => gmail.placeholder = "");
 password.addEventListener("focus", () => password.placeholder = "");
 
-username.addEventListener("blur", () => {
-    if (username.value === "") username.placeholder = "Enter your username";
+gmail.addEventListener("blur", () => {
+    if (gmail.value === "") gmail.placeholder = "Enter your gmail account";
 });
 
 password.addEventListener("blur", () => {
@@ -14,8 +14,8 @@ password.addEventListener("blur", () => {
 });
 
 loginForm.addEventListener("submit", (event) => {
-    if (username.value.trim() === "" || password.value.trim() === "") {
+    if (gmail.value.trim() === "" || password.value.trim() === "") {
         event.preventDefault();
-        alert("Please fill in both username and password");
+        alert("Please fill in both gmail account and password");
     }
 });
