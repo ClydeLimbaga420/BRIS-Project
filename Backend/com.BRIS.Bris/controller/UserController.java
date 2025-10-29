@@ -19,17 +19,17 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginSubmit(@RequestParam String username,
-                              @RequestParam String password,
+    public String loginSubmit(@RequestParam("gmail_account") String gmailAccount,
+                              @RequestParam("password") String password,
                               Model model) {
 
-        User user = userService.login(username, password);
+        User user = userService.login(gmailAccount, password);
 
         if (user != null) {
-            model.addAttribute("username", user.getUsername());
+            model.addAttribute("gmailAccount", user.getGmailAccount());
             return "redirect:/homepage";
         } else {
-            model.addAttribute("error", "Invalid username or password");
+            model.addAttribute("error", "Invalid gmail account or password");
             return "login";
         }
     }
