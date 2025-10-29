@@ -15,7 +15,7 @@ public class allInOne {
         while (running) {
         System.out.println();
         System.out.println("1. Login");
-        System.out.println("2. Change Username or Password");
+        System.out.println("2. Change Gmail Account or Password");
         System.out.println("3. Exit");
         System.out.print(">> ");
         String log = scan.nextLine();
@@ -81,6 +81,6 @@ public class allInOne {
 
        
 
-        scan.close();
+        
     }
 }
