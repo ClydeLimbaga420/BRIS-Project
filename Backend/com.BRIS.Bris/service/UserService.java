@@ -11,7 +11,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User login(String username, String password) {
-        return userRepository.findByUsernameAndPassword(username, password);
+    public User login(String gmailAccount, String password) {
+        return userRepository.findByGmailAccountAndPassword(gmailAccount, password);
     }
 }
