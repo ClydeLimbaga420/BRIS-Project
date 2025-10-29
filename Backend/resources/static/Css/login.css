@@ -18,7 +18,7 @@ body, html {
     padding: 30px;
     border-radius: 10px;
     text-align: center;
-    width: 25%; /* width of form */
+    width: 25%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -47,7 +47,7 @@ body, html {
 }
 
 
-#loginForm input[type="text"],
+#loginForm input[type="email"],
 #loginForm input[type="password"] {
     width: 95%;
     height: 40px;
