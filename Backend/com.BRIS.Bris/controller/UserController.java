@@ -1,92 +1,21 @@
-package com.BRIS.Login.controller;
+package com.BRIS.Login.entity;
 
-import com.BRIS.Login.entity.User;
-import com.BRIS.Login.service.UserService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Controller
-@RequiredArgsConstructor
-public class UserController {
+@Entity
+@Table(name = "user_login")
+@Data
+public class User {
 
-    private final UserService userService;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
+    private Long userId;
 
-    @GetMapping("/")
-    public String loginPage() {
-        return "login";
-    }
+    @Column(name = "gmail_account", nullable = false)
+    private String gmailAccount;
 
-    @PostMapping("/login")
-    public String loginSubmit(@RequestParam("gmail_account") String gmailAccount,
-                              @RequestParam("password") String password,
-                              Model model) {
-
-        User user = userService.login(gmailAccount, password);
-
-        if (user != null) {
-            model.addAttribute("gmailAccount", user.getGmailAccount());
-            return "redirect:/homepage";
-        } else {
-            model.addAttribute("error", "Invalid gmail account or password");
-            return "login";
-        }
-    }
-    @GetMapping("/homepage")
-    public String homepage() {
-        return "homepage";
-    }
-    @Controller
-    public class userGuideCon {
-        @GetMapping("/userguide")
-        public String userGuide() {
-            return "userGuide";
-        }
-    }
-    @Controller
-    public class logOutCon {
-        @GetMapping("/login")
-        public String logout() {
-            return "login";
-        }
-    }
-    @Controller
-    public class addResidentCon {
-        @GetMapping("/newresident")
-        public String newResident() {
-            return "newresident";
-        }
-    }
-    @Controller
-    public class residentsRecordsCon {
-        @GetMapping("/residentsrecords")
-        public String residentsRecords() {
-            return "residentsrecords";
-        }
-    }
-    @Controller
-    public class blotterRecordsCon {
-        @GetMapping("/blotterrecords")
-        public String blotterRecords() {
-            return "blotterrecords";
-        }
-    }
-    @Controller
-    public class reportCaseCon {
-        @GetMapping("/reportcase")
-        public String reportCase() {
-            return "reportcase";
-        }
-    }
-    @Controller
-    public class certificatesCon {
-        @GetMapping("/certificates")
-        public String certificates() {
-            return "certificates";
-        }
-    }
-
-
-
+    @Column(nullable = false)
+    private String password;
 }
