@@ -1,0 +1,39 @@
+body {
+  margin:0;
+  padding:0;
+  cursor:default;
+  user-select:none;
+  background:#F9FAFB;
+  font-family:sans-serif;
+}
+
+.header {
+  gap:65.5%;
+  width:100%;
+  display:flex;
+  padding:.1px;
+  background:#208AAE;
+  box-sizing:border-box;
+}
+
+.header p {
+  margin:0;
+  padding-top:1%;
+  padding-bottom:1%;
+  color:#FFFFFF;
+  margin-left:7%;
+  font-size:30px;
+}
+button {
+  margin:0;
+  padding-top:1%;
+  padding-bottom:1%;
+  background:#208AAE;
+  margin-left:7%;
+  font-size:30px;
+  border: none;
+  color: white;
+}
+button:hover {
+cursor: pointer;
+}
