@@ -3,7 +3,7 @@ body {
   padding:0;
   cursor:default;
   user-select:none;
-  background:#F9FAFB;
+  background:#F3F4F6;
   font-family:sans-serif;
 }
 
@@ -15,12 +15,17 @@ body {
   padding:.1px;
   background:#208AAE;
   box-sizing:border-box;
+  align-items:center;
+}
+
+#header p {
+  justify-content:space-around;
 }
 
 #header .residentp {
   margin:0;
-  padding-top:1.5%;
-  padding-bottom:%;
+  padding-top:1%;
+  padding-bottom:1%;
   color:#FFFFFF;
   margin-left:2%;
   font-size:27px;
@@ -29,12 +34,10 @@ body {
 #header .back {
   font-size:22px;
   color:white;
-
+  margin-left:58px;
   margin-top:22px;
-  margin-left: 58px;
-}
-#header .back:hover{
-cursor: pointer;
+  cursor:pointer;
+
 }
 
 #searchbox {
@@ -47,15 +50,18 @@ cursor: pointer;
   border:1px solid #D1D5DB;
   box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
   border-radius:9px;
+  background:#FFFFFF;
 }
 
 .search {
-  width:98%;
+  width:96%;
   height:38px;
   font-size:15px;
   border:1px solid #D1D5DB;
   box-shadow:0 0 4px rgba(0, 0, 0, 0.3);
   border-radius:4px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .serbot {
@@ -73,5 +79,54 @@ cursor: pointer;
 .namelist {
   display:flex;
   list-style:none;
+}
 
+.residentsList {
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  justify-content:center;
+
+}
+
+#residentsListBox {
+  padding:1.5%;
+  border:1px solid #D1D5DB;
+  width:82.9%;
+  margin-left:7%;
+  margin-right:7%;
+  border-radius:10px;
+  margin-top:2%;
+  margin-bottom:2%;
+  box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
+  background:white;
+}
+
+.residentsInfo {
+  padding:10px;
+  border:1px solid #D1D5DB;
+  border-radius:3px;
+  width:100%;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.2);
+  display:flex;
+  justify-content:space-between;
+}
+
+.residentsInfo .residentsName {
+  font-size:20px;
+  margin-bottom:5px;
+}
+
+.residentsInfo .residentsAddress {
+  font-size:13px;
+}
+
+.residentsId{
+  margin:12.6px;
+}
+
+#Footer {
+  height:31px;
+  width:100%;
+  background:#4B5563;
 }
