@@ -3,18 +3,18 @@ package com.BRIS.Login.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "residents_details")  // 👈 matches your MySQL table name
+@Table(name = "residents_details")
 public class Resident {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "residents_id")
-    private Long id;  // 👈 must match your primary key (change name if needed)
+    private Long id; 
 
-    @Column(name = "first_name")  // 👈 matches MySQL column
+    @Column(name = "first_name")  
     private String firstName;
 
-    @Column(name = "last_name")   // 👈 matches MySQL column
+    @Column(name = "last_name")   
     private String lastName;
 
     @Column(name = "sitio")
@@ -39,3 +39,4 @@ public class Resident {
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
 }
+
