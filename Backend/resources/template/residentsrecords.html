@@ -1,13 +1,28 @@
-<!Doctype html>
-<html lang="en">
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Residents Records</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeholder</title>
+    <link rel="stylesheet" th:href="@{/Css/residentsrecords.css}">
 </head>
+
 <body>
-<h1>Resident Records</h1>
+<div id="header">
+    <p class="residentp"> <b>Residents Record</b></p>
+    <p class="back" onclick="window.location.href='/homepage'"> Back </p>
+</div>
+
+
+<div id="searchbox">
+    <input type="text" class="search" placeholder="  Type a name...">
+    <button class="serbot"> <img src="https://cdn-icons-png.flaticon.com/128/14911/14911080.png" alt="searchicon" width="22px" height="22px" > </button>
+</div>
+
+<div id="residentsListBox">
+    <div class=residentsList></div>
+</div>
+
+<script th:src="@{Js/residentsrecords.js}"></script>
 </body>
 </html>
