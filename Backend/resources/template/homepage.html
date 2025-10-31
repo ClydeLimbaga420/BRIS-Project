@@ -6,6 +6,17 @@
     <title>Home Page</title>
     <link rel="stylesheet" th:href="@{/Css/homepage.css}">
 </head>
+<div id="logoutconfirm" class="confirm">
+    <div class="confirmation">
+        <p>Are you sure you want to <b>Log Out</b>?</p>
+        <div class="buttons">
+            <button id="cancel">Cancel</button>
+            <button id="logout">Log Out</button>
+        </div>
+
+    </div>
+
+</div>
 
 <body>
 <div class="header">
@@ -27,7 +38,8 @@
 
             <li> <img src="https://cdn-icons-png.flaticon.com/128/2040/2040504.png" alt="Settinglogo">Settings</li>
             <li> <img src="https://cdn-icons-png.flaticon.com/128/3503/3503786.png" alt="history Logo">History</li>
-            <li onclick="window.location.href='/login'"> <img src="https://cdn-icons-png.flaticon.com/128/18273/18273095.png" alt="Logout_logo">Logout</li>
+            <li id="logoutbutton"> <img src="https://cdn-icons-png.flaticon.com/128/18273/18273095.png" alt="Logout_logo">Logout</li>
+
         </ul>
     </nav>
 </div>
