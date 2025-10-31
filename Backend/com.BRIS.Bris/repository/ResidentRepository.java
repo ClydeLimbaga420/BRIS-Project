@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface ResidentRepository extends JpaRepository<Resident, Long> {
 
-    // These names refer to your entity fields (firstName and lastName)
+
     List<Resident> findByFirstNameContainingIgnoreCaseOrLastNameContainingIgnoreCaseOrSitioContainingIgnoreCase(String firstName, String lastName, String sitio);
 }
+
