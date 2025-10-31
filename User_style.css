@@ -1,82 +1,70 @@
 body {
-  font-family: inter, sans-serif;
+  font-family: Arial, sans-serif;
   background-color: #f3f6f8;
   margin: 0;
-  padding: 0 0 80px 0;
-
+  padding: 0;
+  min-height: 100vh;
 }
 
-.header {
-  background-color: #007b9c;
-  color: white;
+  width: 100%;
+  height: 66px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  background: #208AAE;
+  padding: 0 2%;
+  box-sizing: border-box;
 }
 
-.header h2 {
+#header .residentp {
+  color: #FFFFFF;
+  font-size: 27px;
   margin: 0;
-  font-weight: normal;
-}
-.card {
-    width: 80%;
-    max-width: 800px;
-    background-color: white;
-    margin: 20px auto 80px;
-    padding: 30px;
-    margin-bottom: 60px;
-    border-radius: 10px;
-    line-height: 1.6;
-    font-size: 16px;
 }
 
-#backBtn {
-  background-color: #007b9c;
-  color: White;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 4px;
+#header .back {
+  font-size: 22px;
+  color: white;
   cursor: pointer;
-  font-weight: bold;
-}
-
-#backBtn:hover {
-  background-color: #208AAE;
+  margin: 0;
 }
 
 .content {
   width: 80%;
-  margin: 20px auto;
+  margin: 40px auto;
   background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 30px 20px 100px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px 60px;
+  box-sizing: border-box;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .scroll-box {
-  height: 400px;
+  flex: 1;
+  max-height: 600px;
   overflow-y: auto;
-  line-height: 1.6;
+  line-height: 1.8;
   color: #333;
-  padding-right: 10px;
+  padding: 10px 15px;
+  border-radius: 6px;
 }
 
 .scroll-box h3 {
   text-align: left;
   margin-top: 0;
+  border-bottom: 2px solid #208AAE;
+  padding-bottom: 8px;
 }
 
 .scroll-box p {
   text-align: justify;
+  margin-bottom: 25px;
+  text-indent: 20px;
 }
-footer {
-  background-color: #1c2533;
-  color: white;
-  text-align: center;
-  padding: 10px 0;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  font-size: 14px;
+
+  display: none;
 }
