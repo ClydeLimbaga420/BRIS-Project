@@ -1,13 +1,198 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add Resident</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Resident</title>
 </head>
 <body>
-<h1>Add Resident</h1>
+  
+  <div id="header">
+    <p class="residentp"> <b>New Resident</b></p>
+  </div>
+  <form>
+    <h2>Add New Resident</h2>
+      <h4>Profile Picture</h4>
+    <div class="profile-upload">
+    <div class="profile-picture">
+      <span>No Image</span>
+    </div>
+      <label for="fileUpload" class="file-label">Choose File</label>
+      <input type="file" id="fileUpload" class="file-input">
+  </div>
+</div>
+  
+  <br>
+  
+  <div class="form-row">
+    <div class="form-group">
+  <label for="input_lastname">Last Name</label>
+  <input type="text" id="input_lastname" required>
+    </div>
+    
+    <div class="form-group">
+  <label for="input_firstname">First Name</label>
+  <input type="text" id="input_firstname" required>
+    </div>
+    
+    <div class="form-group">
+  <label for="input_middlename">Middle Name</label>
+  <input type="text" id="input_middlename" required>
+    </div>
+    
+    <div class="form-group">
+  <label for="select_suffix">Suffix</label>
+  <select id="select_suffix" required>
+    <option>Select</option>
+    <option>Jr.</option>
+    <option>Sr.</option>
+    <option>II</option>
+    <option>III</option>
+    <option>IV</option>
+    <option>V</option>
+  </select>
+    </div>
+    
+    <div class="form-group">
+    <label for="input-age">Age</label>
+    <input type="number" id="input-age" required>
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="form-row">
+    <div class="form-group">
+  <label for="select_sex">Sex</label>
+  <select id="select_sex" required>
+    <option>Select</option>
+    <option>Male</option>
+    <option>Female</option>
+  </select>
+    </div>
+    
+    <div class="form-group">
+  <label for="input_birthdate">Birthdate</label>
+  <input type="date" id="input_birthdate" required>
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="form-row">
+    <div class="form-group">
+  <label for="input_status">Civil Status</label>
+    <select id="input_status" required>
+      <option>Select</option>
+      <option>Single</option>
+      <option>Married</option>
+      <option>Widow</option>
+      <option>Separated</option>
+   </select>
+    </div>
+    
+    <div class="form-group">
+  <label for="input_Sitio">Sitio</label>
+  <input type="text" id="input_Sitio" required>
+    </div>
+  </div>
+  
+  <br>
+  
+  <div class="form-row">
+    <div class="form-group">
+  <label for="input_occupation">Occupation</label>
+  <input type="text" id="input_occupation" required>
+    </div>
+    
+    <div class="form-group">
+  <label for="input_contactnumber">ContactNumber</label>
+  <input type="tel" id="Contactnumber" required>
+    </div>
+  </div>
+    
+  <br>
+    
+    <div class="form-row">
+      <div class="form-group">
+  <label for="select_voterstatus">Voter Status</label>
+  <select id="select_voterstatus" required>
+    <option>Select</option>
+    <option>Registered</option>
+    <option>Not Registered</option>
+  </select>
+        </div>
+      <div class="form-group">
+  <label for="input_email">Email Address</label>
+  <input type="email" id="input_email">
+      </div>
+    </div>
+    
+  <br>
+    
+    <div class="form-row">
+         <div class="form-group">
+  <label for="input_numberofhousehold">Number of Household Members</label>
+  <input type="number" id="input_numberofhousehold" required>
+      </div>
+      
+      <div class="form-group">
+  <label for="select_religion">Religion</label>
+  <select id="select_religion" required>
+    <option>Select</option>
+    <option>Roman Catholic</option>
+    <option>Islam</option>
+    <option>Inglesia ni Cristo</option>
+    <option>Born Again</option>
+  </select>
+      </div>
+    </div>
+    
+  <br>
+    
+    <div class="form-row">
+      <div class="form-group checkbox-group">
+  <label>
+    PWD
+    <input type="checkbox" id="check_personwithdisability">
+  </label>
+</div>
+      
+      <div class="form-group">
+  <label for="select_bloodtype">Blood Type</label>
+  <select id="select_bloodtype" class="select-blood" required>
+    <option>Select</option>
+    <option>A+</option>
+    <option>A-</option>
+    <option>B+</option>
+    <option>B-</option>
+    <option>AB+</option>
+    <option>AB-</option>
+    <option>O+</option>
+    <option>O-</option>
+  </select>
+      </div>
+      
+      <div class="form-group">
+  <label for="select_educationalattainment">Educational Attainment</label>
+  <select id="select_educationalattainment" class="select-education" required>
+    <option>Select</option>
+    <option>Elementary Level</option>
+    <option>Elementary Graduate</option>
+    <option>High School Level</option>
+    <option>Senior High School Level</option>
+    <option>High School Graduate</option>
+  </select>
+      </div>
+    </div>
+    
+  <br>
+    
+    <div class="buttons">
+  <button class="cancel">Cancel</button>
+  <button class="save">Save</button>
+  </div>
+  </form>
+  
 </body>
 </html>
