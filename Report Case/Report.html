@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Case</title>
+    <link rel="stylesheet" href="Report_style.css" />
+  </head>
+  <body>
+    <div id="header">
+      <p class="residentp"><b>Report Case</b></p>
+      <p class="back" onclick="goBack()">Back</p>
+    </div>
+
+    <div class="report-wrapper">
+      <div class="report-box">
+        <h3>REPORTING PERSON DATA</h3>
+
+        <form id="reportForm">
+          <div class="form-layout">
+            <div class="left-section">
+              <label>Complainant Full Name:</label>
+              <div class="triple-inputs">
+                <input type="text" placeholder="First Name" id="c_fname" required />
+                <input type="text" placeholder="Middle Name" id="c_mname" />
+                <input type="text" placeholder="Last Name" id="c_lname" required />
+              </div>
+
+              <div class="double-inputs">
+                <div>
+                  <label>Contact:</label>
+                  <input type="text" id="c_contact" />
+                </div>
+                <div>
+                  <label>Age:</label>
+                  <input type="number" id="c_age" />
+                </div>
+              </div>
+
+              <label>Address:</label>
+              <input type="text" id="c_address" />
+
+              <label>Respondent Full Name:</label>
+              <div class="triple-inputs">
+                <input type="text" placeholder="First Name" id="r_fname" required />
+                <input type="text" placeholder="Middle Name" id="r_mname" />
+                <input type="text" placeholder="Last Name" id="r_lname" required />
+              </div>
+
+              <div class="double-inputs">
+                <div>
+                  <label>Contact:</label>
+                  <input type="text" id="r_contact" />
+                </div>
+                <div>
+                  <label>Age:</label>
+                  <input type="number" id="r_age" />
+                </div>
+              </div>
+
+              <div class="double-inputs">
+                <div>
+                  <label>Case No.:</label>
+                  <input type="text" id="case_no" />
+                </div>
+                <div>
+                  <label>Address:</label>
+                  <input type="text" id="r_address" />
+                </div>
+              </div>
+
+              <div class="double-inputs">
+                <div>
+                  <label>Date of Complain:</label>
+                  <input type="date" id="date_complain" required />
+                </div>
+                <div>
+                  <label>Status:</label>
+                  <select id="status">
+                    <option value="">Select...</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Settled">Settled</option>
+                    <option value="Ongoing">Ongoing</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="double-inputs">
+                <div>
+                  <label>Location of Incidence:</label>
+                  <input type="text" id="location" />
+                </div>
+                <div>
+                  <label>Officer In Charge:</label>
+                  <input type="text" id="officer" />
+                </div>
+              </div>
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="right-section">
+              <div>
+                <label>Case Description:</label>
+                <textarea id="case_desc"></textarea>
+              </div>
+              <div>
+                <label>Action Taken:</label>
+                <textarea id="action_taken"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="submit-row">
+            <button type="submit">Add Report</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
