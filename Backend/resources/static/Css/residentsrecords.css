@@ -71,6 +71,9 @@ body {
   width:45px;
   border-radius:6px;
 }
+.serbot:hover{
+cursor: pointer;
+}
 
 .serbot img {
   filter: invert(1);
