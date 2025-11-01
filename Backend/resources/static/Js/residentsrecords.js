@@ -12,7 +12,6 @@ function renderResidents(residents) {
 
   const query = searchInput.value.trim().toLowerCase();
 
-
   const highlight = (text) => {
     if (!text) return "";
     const regex = new RegExp(`(${query})`, "gi");
@@ -31,20 +30,24 @@ function renderResidents(residents) {
     sitio.classList.add("residentsSitio");
     sitio.innerHTML = `Sitio: ${highlight(resident.sitio)} | Age: ${resident.age}`;
 
+    info.style.cursor = "pointer";
+    info.addEventListener("click", () => {
+      window.location.href = `/resident/${resident.id}`;
+    });
+
     info.append(name, sitio);
     residentsListBox.append(info);
   });
 }
 
-async function searchResidents() {
-  const query = searchInput.value.trim();
-  if (query === "") {
-    residentsListBox.innerHTML = "<p>Enter a name to search.</p>";
-    return;
+async function fetchResidents(query = "") {
+  let url = "/api/residents";
+  if (query) {
+    url = `/api/residents/search?name=${query}`;
   }
 
   try {
-    const response = await fetch(`/api/residents/search?name=${query}`);
+    const response = await fetch(url);
     const data = await response.json();
     renderResidents(data);
   } catch (error) {
@@ -52,10 +55,27 @@ async function searchResidents() {
   }
 }
 
-searchButton.addEventListener("click", searchResidents);
+
+searchButton.addEventListener("click", () => {
+  const query = searchInput.value.trim();
+  fetchResidents(query);
+});
+
+searchInput.addEventListener("input", (e) => {
+  const query = e.target.value.trim();
+  if (query === "") {
+
+    fetchResidents();
+  }
+});
 
 searchInput.addEventListener("keypress", (e) => {
   if (e.key === "Enter") {
-    searchResidents();
+    fetchResidents(searchInput.value.trim());
   }
+});
+
+
+window.addEventListener("DOMContentLoaded", () => {
+  fetchResidents();
 });
