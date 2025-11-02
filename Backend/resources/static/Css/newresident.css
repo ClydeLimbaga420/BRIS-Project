@@ -5,8 +5,8 @@ body {
   user-select:none;
   background:#F9FAFB;
   font-family:sans-serif;
+  overflow-x: hidden;
 }
-
 #header {
   gap:65.5%;
   width:100%;
@@ -15,15 +15,20 @@ body {
   padding:.1px;
   background:#208AAE;
   box-sizing:border-box;
+  align-items:center;
 }
 
 #header .residentp {
   margin:0;
-  padding-top:1.5%;
-  padding-bottom:%;
+  padding-top:1%;
+  padding-bottom:1%;
   color:#FFFFFF;
   margin-left:2%;
   font-size:27px;
+}
+
+#header p {
+  justify-content:space-around;
 }
 
 #header .back{
@@ -31,6 +36,7 @@ body {
   color:white;
   margin-top:22px;
   margin-left: 58px;
+  cursor: pointer;
 }
 
 .profile-upload {
@@ -113,13 +119,16 @@ form {
 .checkbox-group label {
   display: flex;
   align-items: center;
-  gap: 6px;          
+  gap: 6px;
 }
 
 .buttons {
   display: flex;
-  gap: 10px;
-  margin-left: 90%;
+  justify-content: flex-end;
+  gap: 70px;
+  margin-top: 40px;
+  margin-right: 10%;
+  margin-bottom: 40px;
 }
 
 .cancel {
@@ -133,11 +142,23 @@ form {
 }
 
 .save {
-  background-color: #0c1e4a; 
+  background-color: #0c1e4a;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #f8f8f8;
 }
