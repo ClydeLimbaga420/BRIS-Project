@@ -1,0 +1,145 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #F9FAFB;
+  color: #222;
+  cursor: default;
+  user-select: none;
+}
+
+#header {
+  width: 100%;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #208AAE;
+  padding: 0 3%;
+}
+
+#header .residentp {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 600;
+}
+
+#header .back {
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+#header .back:hover {
+  opacity: 0.8;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.card-container {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 450px;
+  background: #fff;
+  border: 1px solid #bfbfbf;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 12px;
+  font-weight: bold;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.card-body {
+  background: #d9d9d9;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-body label {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.card-body input,
+.card-body textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.card-body textarea {
+  resize: none;
+  height: 70px;
+}
+
+.radio-group {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 25px;
+  margin: 8px 0 12px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #000;
+  gap: 6px;
+}
+
+.radio-group input[type="radio"] {
+  accent-color: #000;
+  cursor: pointer;
+  transform: scale(1);
+}
+
+.view-btn {
+  margin-top: 10px;
+  background-color: #2e8b57;
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+
+.view-btn:hover {
+  background-color: #256b45;
+}
+
+@media (max-width: 950px) {
+  .card {
+    width: 90%;
+  }
+}
