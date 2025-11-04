@@ -9,21 +9,26 @@ public class Resident {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "residents_id")
-    private Long id; 
+    private Long id;
 
-    @Column(name = "first_name")  
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name")   
+    @Column(name = "last_name")
     private String lastName;
 
     @Column(name = "sitio")
     private String sitio;
 
+    @Column(name = "sex")
+    private String sex;
+
     @Column(name = "age")
     private int age;
 
-    // --- Getters and Setters ---
+
+
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -36,7 +41,13 @@ public class Resident {
     public String getSitio() { return sitio; }
     public void setSitio(String sitio) { this.sitio = sitio; }
 
+    public String getSex() {
+        return sex;
+    }
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
     public int getAge() { return age; }
     public void setAge(int age) { this.age = age; }
 }
-
