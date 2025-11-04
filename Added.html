@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Report Case</title>
+    <link rel="stylesheet" href="Added_style.css" />
+  </head>
+
+  <body>
+    <div id="header">
+      <p class="residentp"><b>Report Case</b></p>
+      <p class="back" onclick="goBack()">Back</p>
+    </div>
+
+    <div class="content-wrapper">
+      <div class="tabs">
+      </div>
+
+      <div class="alert success" id="alert-box">
+        ✓ Report added successfully!
+      </div>
+
+      <div class="add-another">
+        <a href="report-case.html">← Add another report</a>
+      </div>
+
+      <div class="report-section">
+        <h3>Newly Added Report</h3>
+
+        <div class="report-table">
+          <table id="reportTable">
+            <thead>
+              <tr>
+                <th>Case No.</th>
+                <th>Complainant</th>
+                <th>Respondent</th>
+                <th>Case Description</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
