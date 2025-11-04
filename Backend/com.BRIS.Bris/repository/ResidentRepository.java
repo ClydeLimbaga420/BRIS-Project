@@ -14,6 +14,7 @@ public interface ResidentRepository extends JpaRepository<Resident, Long> {
             "WHERE LOWER(r.firstName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(r.lastName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(r.sitio) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
-            "OR STR(r.id) LIKE CONCAT('%', :keyword, '%')")
+            "OR LOWER(r.sex) = LOWER(:keyword) " +
+            "OR CAST(r.id AS string) LIKE CONCAT('%', :keyword, '%')")
     List<Resident> searchByKeyword(@Param("keyword") String keyword);
 }
