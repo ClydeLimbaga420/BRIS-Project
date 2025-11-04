@@ -1,84 +1,89 @@
-const searchInput = document.querySelector(".search");
-const searchButton = document.querySelector(".serbot");
-const residentsListBox = document.querySelector(".residentsList");
+let residentsList = [];
+
+
+async function loadResidents() {
+  try {
+    const response = await fetch("/api/residents");
+    residentsList = await response.json();
+    renderResidents(residentsList);
+  } catch (error) {
+    console.error("Error fetching residents:", error);
+  }
+}
+
 
 function escapeRegex(text) {
   return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 }
 
-function renderResidents(residents) {
-  residentsListBox.innerHTML = "";
+function renderResidents(residentsData) {
+  const boxInfo = document.querySelector('.residentsList');
+  boxInfo.innerHTML = '';
 
-  if (residents.length === 0) {
-    residentsListBox.innerHTML = "<p>No residents found.</p>";
-    return;
-  }
-
-  const query = searchInput.value.trim().toLowerCase();
+  const query = document.querySelector('.search').value.trim().toLowerCase();
   const safeQuery = escapeRegex(query);
 
+
   const highlight = (text) => {
-    if (!query || !text) return text || "";
-    const regex = new RegExp(`(${safeQuery})`, "gi");
-    return text.replace(regex, "<b style='color: black;'>$1</b>");
+    if (!query || !text) return text || '';
+    const regex = new RegExp(`(${safeQuery})`, 'gi');
+    return text.replace(regex, "<b style='color:black;'>$1</b>");
   };
 
-  residents.forEach((resident) => {
-    const info = document.createElement("div");
-    info.classList.add("residentsInfo");
+  residentsData.forEach(resident => {
+    const info = document.createElement('div');
+    info.classList.add('residentsInfo');
 
-    const name = document.createElement("div");
-    name.classList.add("residentsName");
-    name.innerHTML = `ID: ${highlight(resident.id.toString())}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${highlight(resident.firstName)} ${highlight(resident.lastName)}`;
 
-    const sitio = document.createElement("div");
-    sitio.classList.add("residentsSitio");
-    sitio.innerHTML = `Sitio: ${highlight(resident.sitio)} | Age: ${resident.age}`;
-
-    info.style.cursor = "pointer";
     info.addEventListener("click", () => {
       window.location.href = `/resident/${resident.id}`;
     });
 
-    info.append(name, sitio);
-    residentsListBox.append(info);
+    const name = document.createElement('div');
+    name.classList.add('residentsName');
+    name.innerHTML = ` ${highlight(resident.firstName)} ${highlight(resident.lastName)} `;
+
+    const address = document.createElement('div');
+    address.classList.add('residentsAddress');
+    address.innerHTML = `Sitio: ${highlight(resident.sitio)} - Age: ${resident.age ?? 'N/A'}`;
+
+    const id = document.createElement('div');
+    id.classList.add('residentsId');
+    id.innerHTML = `Id: ${highlight(resident.id.toString())}`;
+
+    const infoLeft = document.createElement('div');
+    infoLeft.append(name, address);
+
+    info.append(infoLeft, id);
+    boxInfo.append(info);
   });
 }
 
-async function fetchResidents(query = "") {
-  let url = "/api/residents";
-  if (query) {
-    url = `/api/residents/search?name=${encodeURIComponent(query)}`;
+
+const searchInput = document.querySelector('.search');
+const searchButton = document.querySelector('.serbot');
+
+searchInput.addEventListener('input', search);
+searchButton.addEventListener('click', search);
+
+async function search() {
+  const showResidents = searchInput.value.trim().toLowerCase();
+
+  if (showResidents === "") {
+    loadResidents();
+    return;
   }
 
   try {
+
+    const url = `/api/residents/search?name=${encodeURIComponent(showResidents)}`;
     const response = await fetch(url);
     const data = await response.json();
     renderResidents(data);
   } catch (error) {
-    console.error("Error:", error);
+    console.error("ERROR:", error);
   }
 }
 
 
-searchButton.addEventListener("click", () => {
-  const query = searchInput.value.trim();
-  fetchResidents(query);
-});
-
-searchInput.addEventListener("input", (e) => {
-  const query = e.target.value.trim();
-  if (query === "") {
-    fetchResidents();
-  }
-});
-
-searchInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
-    fetchResidents(searchInput.value.trim());
-  }
-});
-
-window.addEventListener("DOMContentLoaded", () => {
-  fetchResidents();
-});
+window.addEventListener('DOMContentLoaded', loadResidents);
