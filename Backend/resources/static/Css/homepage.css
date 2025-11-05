@@ -188,9 +188,14 @@ background-color: #208AAE;
 color: white;
 }
 #logout:hover{
-  background-color: red;
+  background-color: Red;
 
 }
 #cancel:hover{
-  background-color:red;
+  background-color: Gray;
+}
+#Footer {
+height: 31px;
+width: 100%;
+background: #4B5563;
 }
