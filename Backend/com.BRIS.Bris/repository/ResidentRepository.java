@@ -11,7 +11,8 @@ import java.util.List;
 public interface ResidentRepository extends JpaRepository<Resident, Long> {
 
     @Query("SELECT r FROM Resident r " +
-            "WHERE LOWER(r.firstName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
+            "WHERE LOWER(CONCAT(r.firstName, ' ', r.lastName)) LIKE LOWER(CONCAT('%', :keyword, '%'))" +
+            "OR LOWER(r.firstName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(r.lastName) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(r.sitio) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
             "OR LOWER(r.sex) = LOWER(:keyword) " +
