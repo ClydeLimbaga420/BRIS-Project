@@ -33,4 +33,22 @@ logoutconfirm.style.display = "none";
 }
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logoutbutton');
+    const logoutConfirm = document.getElementById('logoutconfirm');
+    const cancelBtn = document.getElementById('cancel');
+    const logoutConfirmBtn = document.getElementById('logout');
+
+    logoutButton.addEventListener('click', () => {
+        logoutConfirm.style.display = 'flex';
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        logoutConfirm.style.display = 'none';
+    });
+
+    logoutConfirmBtn.addEventListener('click', () => {
+        window.location.href = '/login';
+    });
+});
 
