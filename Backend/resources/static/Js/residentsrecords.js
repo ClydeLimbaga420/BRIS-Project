@@ -1,6 +1,5 @@
 let residentsList = [];
 
-
 async function loadResidents() {
   try {
     const response = await fetch("/api/residents");
@@ -11,29 +10,13 @@ async function loadResidents() {
   }
 }
 
-
-function escapeRegex(text) {
-  return text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
 function renderResidents(residentsData) {
   const boxInfo = document.querySelector('.residentsList');
   boxInfo.innerHTML = '';
 
-  const query = document.querySelector('.search').value.trim().toLowerCase();
-  const safeQuery = escapeRegex(query);
-
-
-  const highlight = (text) => {
-    if (!query || !text) return text || '';
-    const regex = new RegExp(`(${safeQuery})`, 'gi');
-    return text.replace(regex, "<b style='color:black;'>$1</b>");
-  };
-
   residentsData.forEach(resident => {
     const info = document.createElement('div');
     info.classList.add('residentsInfo');
-
 
     info.addEventListener("click", () => {
       window.location.href = `/resident/${resident.id}`;
@@ -41,15 +24,15 @@ function renderResidents(residentsData) {
 
     const name = document.createElement('div');
     name.classList.add('residentsName');
-    name.innerHTML = ` ${highlight(resident.firstName)} ${highlight(resident.lastName)} `;
+    name.textContent = `${resident.firstName} ${resident.lastName}`;
 
-    const address = document.createElement('div');
-    address.classList.add('residentsAddress');
-    address.innerHTML = `Sitio: ${highlight(resident.sitio)} - Age: ${resident.age ?? 'N/A'}`;
+    const sitio = document.createElement('div');
+    sitio.classList.add('residentsSitio');
+    sitio.textContent = `Sitio: ${resident.sitio} - Age: ${resident.age ?? 'N/A'}`;
 
     const id = document.createElement('div');
     id.classList.add('residentsId');
-    id.innerHTML = `Id: ${highlight(resident.id.toString())}`;
+    id.textContent = `Id: ${resident.id}`;
 
     const infoLeft = document.createElement('div');
     infoLeft.append(name, address);
@@ -58,7 +41,6 @@ function renderResidents(residentsData) {
     boxInfo.append(info);
   });
 }
-
 
 const searchInput = document.querySelector('.search');
 const searchButton = document.querySelector('.serbot');
@@ -75,7 +57,6 @@ async function search() {
   }
 
   try {
-
     const url = `/api/residents/search?name=${encodeURIComponent(showResidents)}`;
     const response = await fetch(url);
     const data = await response.json();
@@ -84,6 +65,5 @@ async function search() {
     console.error("ERROR:", error);
   }
 }
-
 
 window.addEventListener('DOMContentLoaded', loadResidents);
