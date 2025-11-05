@@ -35,7 +35,7 @@ function renderResidents(residentsData) {
     id.textContent = `Id: ${resident.id}`;
 
     const infoLeft = document.createElement('div');
-    infoLeft.append(name, address);
+    infoLeft.append(name, sitio);
 
     info.append(infoLeft, id);
     boxInfo.append(info);
