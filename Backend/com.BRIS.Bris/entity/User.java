@@ -13,8 +13,8 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
-    @Column(nullable = false)
-    private String username;
+    @Column(name = "gmail_account", nullable = false)
+    private String gmailAccount;
 
     @Column(nullable = false)
     private String password;
