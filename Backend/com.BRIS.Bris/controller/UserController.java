@@ -3,6 +3,7 @@ package com.BRIS.Login.controller;
 import com.BRIS.Login.entity.User;
 import com.BRIS.Login.service.UserService;
 import com.BRIS.Login.service.UpdateService;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -90,6 +91,12 @@ public class UserController {
             return "certificates";
         }
     }
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/login?logout";
+    }
+
 
 
 
