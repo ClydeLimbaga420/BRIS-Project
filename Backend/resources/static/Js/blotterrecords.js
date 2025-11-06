@@ -18,7 +18,7 @@ function renderBlotters(blottersData) {
     const info = document.createElement('div');
     info.classList.add('blottersInfo');
 
-    // Click redirects to the individual blotter page
+  
     info.addEventListener("click", () => {
       window.location.href = `/blotter/${blotter.id}`;
     });
@@ -26,19 +26,17 @@ function renderBlotters(blottersData) {
     const details = document.createElement('div');
     details.classList.add('blotterDetails');
 
-    // Use separate spans for clean layout
-    details.innerHTML = `
-      <span class="caseNo">Case No. ${blotter.caseNo}</span>
+
+    details.innerHTML = `<span class="caseNo">Case No. ${blotter.caseNo}</span>
       <span class="blotterName">${blotter.blotteredFirstName} ${blotter.blotteredLastName}</span>
-      <span class="blotterStatus">Status: ${blotter.blotterStatus}</span>
-    `;
+      <span class="blotterStatus">Status: ${blotter.blotterStatus}</span>`;
 
     info.append(details);
     boxInfo.append(info);
   });
 }
 
-// Search functionality
+
 const searchInput = document.querySelector('.search');
 const searchButton = document.querySelector('.serbot');
 
