@@ -23,7 +23,7 @@ public class NewBlotterController {
             model.addAttribute("errorMessage", "Error saving report: " + e.getMessage());
         }
 
-        
-        return "reportcase"; 
+
+        return "reportcase";
     }
 }
