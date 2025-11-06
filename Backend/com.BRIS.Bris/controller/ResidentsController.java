@@ -15,6 +15,7 @@ public class ResidentsController {
 
     @GetMapping
     public List<Resident> getAllResidents() {
+
         return residentRepository.findAll();
     }
 
