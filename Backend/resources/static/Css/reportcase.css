@@ -136,4 +136,10 @@ button:hover {
   .form-layout {
     grid-template-columns: 1fr;
   }
+
+}
+#Footer {
+  height:31px;
+  width:100%;
+  background:#4B5563;
 }
