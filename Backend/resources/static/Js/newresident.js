@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function() {
             input.placeholder = "Specify Educational Attainment";
             input.required = true;
 
-            
+
             const style = window.getComputedStyle(select);
             input.style.width = style.width;
             input.style.height = style.height;
