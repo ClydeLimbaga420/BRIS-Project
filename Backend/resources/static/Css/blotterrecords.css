@@ -1,0 +1,160 @@
+body {
+  margin:0;
+  padding:0;
+  cursor:default;
+  user-select:none;
+  background:#F3F4F6;
+  font-family:sans-serif;
+}
+
+#header {
+  width:100%;
+  height:66px;
+  display:flex;
+  justify-content:space-around;
+  padding:.1px;
+  background:#208AAE;
+  box-sizing:border-box;
+  align-items:center;
+  gap:64%;
+}
+
+#header .blotterp {
+  margin:0;
+  padding-top:1%;
+  padding-bottom:1%;
+  color:#FFFFFF;
+  margin-left:2%;
+  font-size:27px;
+}
+
+#header .back {
+  font-size:22px;
+  color:white;
+  margin:0;
+  cursor:pointer;
+}
+
+#searchbox {
+  display:flex;
+  justify-content:center;
+  margin-top:3%;
+  margin-left:7%;
+  margin-right:7%;
+  padding:15px;
+  border:1px solid #D1D5DB;
+  box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius:9px;
+  background:#FFFFFF;
+}
+
+.search {
+  width:96%;
+  height:38px;
+  font-size:15px;
+  border:1px solid #D1D5DB;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.3);
+  border-radius:4px;
+}
+
+.serbot {
+  background:#0D2149;
+  margin-left:10px;
+  height:41px;
+  width:45px;
+  border-radius:6px;
+}
+
+.serbot img {
+  filter: invert(1);
+}
+
+.namelist {
+  display:flex;
+  list-style:none;
+}
+
+.blottersList {
+  display:flex;
+  align-items:center;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.blottersList:hover {
+    cursor: pointer;
+}
+
+#blottersListBox {
+  padding:1.5%;
+  border:1px solid #D1D5DB;
+  width:82.9%;
+  margin-left:7%;
+  margin-right:7%;
+  border-radius:10px;
+  margin-top:2%;
+  margin-bottom:2%;
+  box-shadow:0 0 5px rgba(0, 0, 0, 0.2);
+  background:white;
+  max-height:600px;
+  mix-height:100px;
+  height:auto;
+  overflow-y:auto;
+}
+
+.blottersInfo {
+  padding:10px;
+  border:1px solid #D1D5DB;
+  border-radius:3px;
+  width:100%;
+  box-shadow:0 0 4px rgba(0, 0, 0, 0.2);
+  display:flex;
+  justify-content:space-between;
+}
+
+.blottersInfo .blottersName {
+  font-size:20px;
+  margin-bottom:5px;
+}
+
+.blottersInfo .blottersAddress {
+  font-size:13px;
+}
+
+.blottersId{
+  margin:12.6px;
+}
+
+#Footer {
+  height:31px;
+  width:100%;
+  background:#4B5563;
+}
+
+
+
+.blotterDetails {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 16px;
+}
+
+.blotterDetails span {
+  flex: 1;
+  text-align: left;
+}
+
+.blotterDetails .caseNo {
+  flex: 0.5;
+}
+
+.blotterDetails .blotterName {
+  flex: 1;
+  text-align: center;
+}
+
+.blotterDetails .blotterStatus {
+  flex: 0.5;
+  text-align: right;
+}
