@@ -162,3 +162,8 @@ form {
   overflow: hidden;
   background-color: #f8f8f8;
 }
+#Footer {
+height: 31px;
+width: 100%;
+background: #4B5563
+}
