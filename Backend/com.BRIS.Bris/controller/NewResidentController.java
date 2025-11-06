@@ -1,6 +1,8 @@
 package com.BRIS.Login.controller;
 
+import com.BRIS.Login.entity.History;
 import com.BRIS.Login.entity.NewResident;
+import com.BRIS.Login.repository.HistoryRepository;
 import com.BRIS.Login.repository.NewResidentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,9 @@ public class NewResidentController {
 
     @Autowired
     private NewResidentRepository newResidentRepository;
+
+    @Autowired
+    private HistoryRepository historyRepository;
 
     @PostMapping("/residents/save")
     public String saveResident(NewResident newResident,
@@ -33,6 +38,9 @@ public class NewResidentController {
             }
 
             newResidentRepository.save(newResident);
+
+            History history = new History("Added New Resident: " + newResident.getFirstname() + " " + newResident.getLastname());
+            historyRepository.save(history);
             model.addAttribute("successMessage","Resident Added Succesfully!");
 
         } catch (Exception e) {
