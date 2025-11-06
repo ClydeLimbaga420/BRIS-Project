@@ -1,0 +1,66 @@
+let blottersList = [];
+
+async function loadBlotters() {
+  try {
+    const response = await fetch("/api/blotter");
+    blottersList = await response.json();
+    renderBlotters(blottersList);
+  } catch (error) {
+    console.error("Error fetching blotters:", error);
+  }
+}
+
+function renderBlotters(blottersData) {
+  const boxInfo = document.querySelector('.blottersList');
+  boxInfo.innerHTML = '';
+
+  blottersData.forEach(blotter => {
+    const info = document.createElement('div');
+    info.classList.add('blottersInfo');
+
+    // Click redirects to the individual blotter page
+    info.addEventListener("click", () => {
+      window.location.href = `/blotter/${blotter.id}`;
+    });
+
+    const details = document.createElement('div');
+    details.classList.add('blotterDetails');
+
+    // Use separate spans for clean layout
+    details.innerHTML = `
+      <span class="caseNo">Case No. ${blotter.caseNo}</span>
+      <span class="blotterName">${blotter.blotteredFirstName} ${blotter.blotteredLastName}</span>
+      <span class="blotterStatus">Status: ${blotter.blotterStatus}</span>
+    `;
+
+    info.append(details);
+    boxInfo.append(info);
+  });
+}
+
+// Search functionality
+const searchInput = document.querySelector('.search');
+const searchButton = document.querySelector('.serbot');
+
+searchInput.addEventListener('input', search);
+searchButton.addEventListener('click', search);
+
+async function search() {
+  const showBlotters = searchInput.value.trim().toLowerCase();
+
+  if (showBlotters === "") {
+    loadBlotters();
+    return;
+  }
+
+  try {
+    const url = `/api/blotter/search?name=${encodeURIComponent(showBlotters)}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    renderBlotters(data);
+  } catch (error) {
+    console.error("ERROR:", error);
+  }
+}
+
+window.addEventListener('DOMContentLoaded', loadBlotters);
