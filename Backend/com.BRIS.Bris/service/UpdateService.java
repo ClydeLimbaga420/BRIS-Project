@@ -11,9 +11,9 @@ public class UpdateService {
 
     private Connection sql() throws Exception {
 
-        String url = "jdbc:mysql://localhost:3306/your_database";
+        String url = "jdbc:mysql://localhost:3307/systemdb";
         String username = "root";
-        String password = "";
+        String password = "clydelimbaga123";
         return DriverManager.getConnection(url, username, password);
     }
 
