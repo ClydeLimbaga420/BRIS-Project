@@ -19,7 +19,7 @@ public class UserService {
         return userRepository.findByGmailAccountAndPassword(gmailAccount, password);
     }
 
-   
+
     private String hashPassword(String input) {
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
