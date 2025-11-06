@@ -29,17 +29,33 @@ public class Resident {
 
 
 
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public String getFirstName() { return firstName; }
-    public void setFirstName(String firstName) { this.firstName = firstName; }
+    public String getFirstName() {
+        return firstName;
+    }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-    public String getLastName() { return lastName; }
-    public void setLastName(String lastName) { this.lastName = lastName; }
+    public String getLastName() {
+        return lastName;
+    }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-    public String getSitio() { return sitio; }
-    public void setSitio(String sitio) { this.sitio = sitio; }
+    public String getSitio() {
+        return sitio;
+    }
+    public void setSitio(String sitio) {
+        this.sitio = sitio;
+    }
 
     public String getSex() {
         return sex;
@@ -48,6 +64,10 @@ public class Resident {
         this.sex = sex;
     }
 
-    public int getAge() { return age; }
-    public void setAge(int age) { this.age = age; }
+    public int getAge() {
+        return age;
+    }
+    public void setAge(int age) {
+        this.age = age;
+    }
 }
