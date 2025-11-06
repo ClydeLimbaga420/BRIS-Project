@@ -50,6 +50,13 @@ public class UserController {
         }
     }
     @Controller
+    public class historyCon {
+        @GetMapping("/history")
+        public String history() {
+            return "history";
+        }
+    }
+    @Controller
     public class logOutCon {
         @GetMapping("/login")
         public String logout() {
