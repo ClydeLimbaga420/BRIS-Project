@@ -1,13 +1,82 @@
-<!Doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Certificates/Clearance</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clearance & Certificate</title>
+    <link rel="stylesheet" th:href="@{/Css/certificates.css}">
 </head>
 <body>
-<h1>Certificates</h1>
+
+<div id="header">
+    <p class="residentp"><b>Certificate & Clearance Issuance</b></p>
+    <p class="back" id="backBtn">Back</p>
+</div>
+
+<div class="main-container">
+    <div class="card-container">
+
+        <div class="card">
+            <div class="card-header">CLEARANCE</div>
+            <div class="card-body">
+                <form id="clearanceForm">
+                    <label>Certificate Date Issue</label>
+
+                    <input type="date" value=" ">
+
+                    <div class="radio-group">
+                        <label><input type="radio" name="clearType" checked> Barangay</label>
+                        <label><input type="radio" name="clearType"> Business</label>
+                    </div>
+
+                    <label>Name:</label>
+                    <input type="text" placeholder="Enter full name">
+
+                    <label>Age:</label>
+                    <input type="number" placeholder="Enter age">
+
+                    <label>Address:</label>
+                    <input type="text" placeholder="Enter address">
+
+                    <label>Purpose:</label>
+                    <textarea placeholder="Enter purpose"></textarea>
+
+                    <button type="submit" class="view-btn">View</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">CERTIFICATE</div>
+            <div class="card-body">
+                <form id="certificateForm">
+                    <label>Certificate Date Issue</label>
+                    <input type="date">
+
+                    <div class="radio-group">
+                        <label><input type="radio" name="certType" checked> Indigency</label>
+                        <label><input type="radio" name="certType"> Residency</label>
+                    </div>
+
+                    <label>Name:</label>
+                    <input type="text" placeholder="Enter full name">
+
+                    <label>Age:</label>
+                    <input type="number" placeholder="Enter age">
+
+                    <label>Address:</label>
+                    <input type="text" placeholder="Enter address">
+
+                    <label>Purpose:</label>
+                    <textarea placeholder="Enter purpose"></textarea>
+
+                    <button type="submit" class="view-btn">View</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{Js/certificates.js}"></script>
 </body>
 </html>
