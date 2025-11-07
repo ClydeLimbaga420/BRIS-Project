@@ -73,7 +73,8 @@ public class NewResident {
     @Column(name = "residents_photo")
     private byte[] photo;
 
-
+    @Column(name = "conditions")
+    private String condition;
 
     public Long getId() {
         return id;
@@ -220,5 +221,12 @@ public class NewResident {
     }
     public void setPhoto(byte[] photo) {
         this.photo = photo;
+    }
+
+    public String getCondition() {
+        return condition;
+    }
+    public void setCondition(String condition) {
+        this.condition = condition;
     }
 }
