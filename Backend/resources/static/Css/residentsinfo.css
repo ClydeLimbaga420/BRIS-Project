@@ -66,6 +66,7 @@ body {
   display:flex;
   flex-direction:column;
   gap:11px;
+  margin-bottom:5%;
 }
 
 .residentName {
@@ -74,28 +75,20 @@ body {
   font-family:arial;
 }
 
-.residentAddressAge {
-  font-size:14px;
-  color:#6B7280;
+.residentAge {
+  font-size:16px;
 }
 
-.residentOccupation{
-  font-family:arial;
-  color:#374151;
-}
 
 .editButton {
-  padding:2%;
+  padding-right:2%;
   color:#2563EB;
-}
-
-.editButton a {
-  text-decoration:none;
+  cursor:pointer;
 }
 
 #infoLower {
   padding:1%;
-  padding-bottom:45px;
+  padding-bottom:40px;
   overflow-x:auto;
   width:100%;
 }
