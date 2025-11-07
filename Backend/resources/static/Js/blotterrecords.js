@@ -18,7 +18,7 @@ function renderBlotters(blottersData) {
     const info = document.createElement('div');
     info.classList.add('blottersInfo');
 
-  
+
     info.addEventListener("click", () => {
       window.location.href = `/blotter/${blotter.id}`;
     });

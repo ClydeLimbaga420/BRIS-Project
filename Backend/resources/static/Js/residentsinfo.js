@@ -1,200 +1,64 @@
+document.addEventListener("DOMContentLoaded", async () => {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+  if (!id) return;
 
-
-const residentDataInfo = [
-  {
-    firstName: "sing",
-    lastName: "vi",
-    age:"15",
-    sitio:"bohol",
-    occupation:"rider",
-    voterStatus:"Registered",
-    householdMembers:"19",
-    birthDate:"08/23/2004",
-    civilStatus:"single",
-    contact:"secret",
-    bloodType:"O",
-    email:"howow@gmail.com",
-    educationalAttainment:"NOtDone",
-    religion:"catholic",
-    PWD:"Idunno",
-    suffix:"N\A",
-    picture: "https://cdn-icons-png.flaticon.com/128/346/346167.png",
-  },
-];
-
-
-const pageQueryString = window.location.search;
-const parsedQuery = new URLSearchParams(pageQueryString);
-const urlQuery = parsedQuery.get('id');
-
-const residentId = parseInt(urlQuery, 10);
-
-
-async function getResidentInfo(residentId) {
   try {
-    const response = await fetch(`local:host/hereputthelocalhost/resident/${residentId}`);
-    if(!response.ok) throw new Error("Resident Not Found");
-    const residentInfo = await response.json();
-    displayResidentHeaderInfo(residentInfo);
-    displayResidentLowerInfo(residentInfo);
-  } catch(error) {
+    const response = await fetch(`/api/residents/${id}`);
+    if (!response.ok) throw new Error("Resident not found");
+    const resident = await response.json();
 
-    console.error(error);
-    alert(Resident Not Found!); // ge tangtang nakong double quotation kay sigig alert, samok
 
-    if(document.referrer) {
-      history.back();
-    } else {
-       window.location.href = "index.html";
-    }
+    displayResidentHeaderInfo(resident);
+
+
+    displayResidentDetails(resident);
+  } catch (err) {
+    console.error("Error", error);
   }
-}
-
-getResidentInfo(residentId);
+});
 
 
-
-
-function displayResidentHeaderInfo (resident) {
-
+function displayResidentHeaderInfo(resident) {
   const photo = document.getElementById('residentPhoto');
-  photo.src = resident.picture;
-  photo.alt = `${resident.firstName} ${resident.lastName}`;
+  photo.src = `/api/residents/${resident.id}/photo`;
+  photo.onerror = () => (photo.src = '/Img/default-profile.jpg');
+  photo.alt = `${resident.firstName ?? ''} ${resident.lastName ?? ''}`;
 
   const residentsHeader = document.querySelector('.residentHeaderInfo');
   residentsHeader.innerHTML = '';
 
   const name = document.createElement('div');
   name.classList.add('residentName');
-  name.textContent = `${resident.firstName} ${resident.lastName}`;
+  name.textContent = `${resident.firstName ?? ''} ${resident.middleName ?? ''} ${resident.lastName ?? ''}`.trim();
 
-
-  const address_age = document.createElement('div');
-  address_age.classList.add('residentAddressAge');
-  address_age.textContent = `${resident.sitio} ${resident.age}`;
-
-
-  const occupation = document.createElement('div');
-  occupation.classList.add('residentOccupation');
-  occupation.textContent = `${resident.occupation}`;
-
-
- residentsHeader.append(name, address_age, occupation)
-}
-
-displayResidentHeaderInfo(residentDataInfo[0]);
-
-
-function displayResidentLowerInfo(resident) {
-
-  const residentSitio = document.getElementById('residentSitio')
-  residentSitio.innerHTML = '';
+  const age = document.createElement('div');
+  age.classList.add('residentAge');
+  age.textContent = `Age: ${resident.age ?? 'N/A'} yrs old`;
 
   const sitio = document.createElement('div');
-  sitio.textContent =`${resident.sitio}`;
+  sitio.classList.add('residentSitio');
+  sitio.textContent = `Sitio: ${resident.sitio ?? 'N/A'}`;
 
-  residentSitio.appendChild(sitio);
-
-
-  const residentVoterStatus = document.getElementById('residentVoterStatus');
-  residentVoterStatus.innerHTML ='';
-
-  const voterStatus = document.createElement('div');
-  voterStatus.textContent = `${resident.voterStatus}`;
-
-  residentVoterStatus.appendChild(voterStatus);
-
-
-  const residentBirthDate = document.getElementById('residentBirthDate');
-  residentBirthDate.innerHTML ='';
-
-  const birthDate = document.createElement('div');
-  birthDate.textContent = `${resident.birthDate}`;
-
-  residentBirthDate.appendChild(birthDate);
-
-
-  const residentCivilStatus = document.getElementById('residentCivilStatus');
-  residentCivilStatus.innerHTML ='';
-
-  const civilStatus = document.createElement('div');
-  civilStatus.textContent = `${resident.civilStatus}`;
-
-  residentCivilStatus.appendChild(civilStatus);
-
-
-  const residentHouseholdMembers = document.getElementById('residentHouseholdMembers');
-  residentHouseholdMembers.innerHTML='';
-
-  const householdMembers = document.createElement('div');
-  householdMembers.textContent = `${resident.householdMembers}`;
-
-  residentHouseholdMembers.appendChild(householdMembers);
-
-
-  const residentContact = document.getElementById('residentContact');
-  residentContact.innerHTML ='';
-
-  const contact = document.createElement('div');
-  contact.textContent = `${resident.contact}`;
-
-  residentContact.appendChild(contact);
-
-
-  const residentBloodType = document.getElementById('residentBloodType');
-  residentBloodType.innerHTML ='';
-
-  const bloodType = document.createElement('div');
-  bloodType.textContent = `${resident.bloodType}`;
-
-  residentBloodType.appendChild(bloodType);
-
-
-  const residentEmail = document.getElementById('residentEmail');
-  residentEmail.innerHTML ='';
-
-  const email = document.createElement('div');
-  email.textContent = `${resident.email}`;
-
-  residentEmail.appendChild(email);
-
-
-  const residentEducationalAttainment = document.getElementById('residentEducationalAttainment');
-  residentEducationalAttainment.innerHTML ='';
-
-  const educationalAttainment = document.createElement('div');
-  educationalAttainment.textContent = `${resident.educationalAttainment}`;
-
-  residentEducationalAttainment.appendChild(educationalAttainment);
-
-
-  const residentReligion = document.getElementById('residentReligion');
-  residentReligion.innerHTML ='';
-
-  const religion = document.createElement('div');
-  religion.textContent = `${resident.religion}`;
-
-  residentReligion.appendChild(religion);
-
-
-  const residentPWD = document.getElementById('residentPWD');
-  residentPWD.innerHTML ='';
-
-  const PWD = document.createElement('div');
-  PWD.textContent = `${resident.PWD}`;
-
-  residentPWD.appendChild(PWD);
-
-
-  const residentSuffix = document.getElementById('residentSuffix');
-  residentSuffix.innerHTML ='';
-
-  const suffix = document.createElement('div');
-  suffix.textContent = `${resident.suffix}`;
-
-  residentSuffix.appendChild(suffix);
-
-
+  residentsHeader.append(name, age);
 }
 
-displayResidentLowerInfo(residentDataInfo[0]);
+
+function displayResidentDetails(resident) {
+  document.querySelector("#residentSex").textContent = resident.sex ?? "";
+  document.querySelector("#residentOccupation").textContent = resident.occupation ?? "";
+  document.querySelector("#residentSitio").textContent = resident.sitio ?? "";
+  document.querySelector("#residentVoterStatus").textContent = resident.voterstatus ?? "";
+  document.querySelector("#residentBirthDate").textContent = resident.birthdate ?? "";
+  document.querySelector("#residentCivilStatus").textContent = resident.civilstatus ?? "";
+  document.querySelector("#residentHouseholdMembers").textContent = resident.household ?? "";
+  document.querySelector("#residentContact").textContent = resident.contactnumber ?? "";
+  document.querySelector("#residentBloodType").textContent = resident.bloodtype ?? "";
+  document.querySelector("#residentEmail").textContent = resident.email ?? "";
+  document.querySelector("#residentEducationalAttainment").textContent = resident.education ?? "";
+  document.querySelector("#residentReligion").textContent = resident.religion ?? "";
+  document.querySelector("#residentPWD").textContent = resident.pwd ? "Yes" : "No";
+  document.querySelector("#residentSuffix").textContent = resident.suffix ?? "";
+  document.querySelector("#residentSenior").textContent = resident.senior ? "Yes" : "No";
+  document.querySelector("#residentCondition").textContent = resident.condition ?? "";
+}

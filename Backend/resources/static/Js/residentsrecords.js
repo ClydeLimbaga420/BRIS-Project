@@ -19,7 +19,8 @@ function renderResidents(residentsData) {
     info.classList.add('residentsInfo');
 
     info.addEventListener("click", () => {
-      window.location.href = `/resident/${resident.id}`;
+      window.location.href = `/residentsinfo?id=${resident.id}`;
+
     });
 
     const name = document.createElement('div');

@@ -36,16 +36,31 @@ async function loadResidentCount() {
     const response = await fetch("/api/residents");
     const residentsList = await response.json();
     totalResidents = residentsList.length;
-
-
-    document.getElementById("residentCount").textContent = totalResidents;
+    document.getElementById("residentsRecords").textContent = totalResidents;
   } catch (error) {
     console.error("Error:", error);
-    document.getElementById("residentCount").textContent = 0;
+    document.getElementById("residentsRecords").textContent = 0;
   }
 }
 
 
 document.addEventListener("DOMContentLoaded", () => {
   loadResidentCount();
+});
+
+async function loadBlotterCount() {
+    try {
+        const response = await fetch("/api/blotter");
+        const blottersList = await response.json();
+        totalBlotters = blottersList.length;
+
+        document.getElementById("blotterRecords").textContent = totalBlotters;
+    } catch (error) {
+    console.error("Error:", error);
+    document.getElementById("blotterRecords").textContent = 0;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+loadBlotterCount();
 });
