@@ -49,12 +49,13 @@ public class NewResidentController {
         }
 
 
-        return "redirect:/residents";
+        return "redirect:/view?id=" + newResident.getId();
     }
 
-    @GetMapping("/residents")
-    public String viewResidents(Model model) {
-        model.addAttribute("residents", newResidentRepository.findAll());
-        return "newresident";
+    @GetMapping("/view")
+    public String viewResident(@RequestParam("id") Long id, Model model) {
+        NewResident resident = newResidentRepository.findById(id).orElse(null);
+        model.addAttribute("resident", resident);
+        return "view";
     }
 }
