@@ -1,6 +1,8 @@
 package com.BRIS.Login.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -8,228 +10,122 @@ import java.time.LocalDate;
 @Table(name = "residents_details")
 public class Resident {
 
+    @Getter
+    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "residents_id")
     private Long id;
 
+    @Getter
+    @Setter
     @Column(name = "first_name")
     private String firstName;
 
+
+    @Getter
+    @Setter
     @Column(name = "middle_name")
     private String middleName;
 
+    @Getter
+    @Setter
     @Column(name = "last_name")
     private String lastName;
 
+    @Getter
+    @Setter
     @Column(name = "sitio")
     private String sitio;
 
+    @Getter
+    @Setter
     @Column(name = "sex")
     private String sex;
 
+    @Getter
+    @Setter
     @Column(name = "age")
     private int age;
 
+
+    @Getter
+    @Setter
     @Column(name = "suffix")
     private String suffix;
 
+    @Getter
+    @Setter
     @Column(name = "birthdate")
     private LocalDate birthdate;
 
+    @Getter
+    @Setter
     @Column(name = "civil_status")
     private String civilstatus;
 
+    @Getter
+    @Setter
     @Column(name = "occupation")
     private String occupation;
 
+    @Getter
+    @Setter
     @Column(name = "educational_attainment")
     private String education;
 
+    @Getter
+    @Setter
     @Column(name = "no_household")
     private String household;
 
+    @Getter
+    @Setter
     @Column(name = "contact_number")
     private String contactnumber;
 
+    @Getter
+    @Setter
     @Column(name = "email_address")
     private String email;
 
+    @Getter
+    @Setter
     @Column(name = "religion")
     private String religion;
 
+    @Getter
+    @Setter
     @Column(name = "voter_status")
     private String voterstatus;
 
+    @Getter
+    @Setter
     @Column(name = "PWD")
     private boolean pwd;
 
+    @Getter
+    @Setter
     @Column(name = "blood_type")
     private String bloodtype;
 
+    @Getter
+    @Setter
     @Column(name = "senior")
     private Boolean senior;
 
+    @Getter
+    @Setter
     @Lob
     @Column(name = "residents_photo")
     private byte[] photo;
 
+    @Getter
+    @Setter
     @Column(name = "conditions")
     private String condition;
 
 
 
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getMiddleName() {
-        return middleName;
-    }
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getSitio() {
-        return sitio;
-    }
-    public void setSitio(String sitio) {
-        this.sitio = sitio;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public int getAge() {
-        return age;
-    }
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getSuffix() {
-        return suffix;
-    }
-    public void setSuffix(String suffix) {
-        this.suffix = suffix;
-    }
-
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public String getCivilstatus() {
-        return civilstatus;
-    }
-    public void setCivilstatus(String civilstatus) {
-        this.civilstatus = civilstatus;
-    }
-
-    public String getOccupation() {
-        return occupation;
-    }
-    public void setOccupation(String occupation) {
-        this.occupation = occupation;
-    }
-
-    public String getEducation() {
-        return education;
-    }
-    public void setEducation(String education) {
-        this.education = education;
-    }
-
-    public String getHousehold() {
-        return household;
-    }
-    public void setHousehold(String household) {
-        this.household = household;
-    }
-
-    public String getContactnumber() {
-        return contactnumber;
-    }
-    public void setContactnumber(String contactnumber) {
-        this.contactnumber = contactnumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getReligion() {
-        return religion;
-    }
-    public void setReligion(String religion) {
-        this.religion = religion;
-    }
-
-    public String getVoterstatus() {
-        return voterstatus;
-    }
-    public void setVoterstatus(String voterstatus) {
-        this.voterstatus = voterstatus;
-    }
-
-    public boolean isPwd() {
-        return pwd;
-    }
-    public void setPwd(boolean pwd) {
-        this.pwd = pwd;
-    }
-
-    public String getBloodtype() {
-        return bloodtype;
-    }
-    public void setBloodtype(String bloodtype) {
-        this.bloodtype = bloodtype;
-    }
-
-    public Boolean getSenior() {
-        return senior;
-    }
-    public void setSenior(Boolean senior) {
-        this.senior = senior;
-    }
-
-    public byte[] getPhoto() {
-        return photo;
-    }
-    public void setPhoto(byte[] photo) {
-        this.photo = photo;
-    }
-
-    public String getCondition() {
-        return condition;
-    }
-    public void setCondition(String condition) {
-        this.condition = condition;
-    }
 }
