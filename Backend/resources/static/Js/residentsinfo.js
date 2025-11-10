@@ -1,64 +1,81 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  if (!id) return;
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    if (!id) return;
 
-  try {
-    const response = await fetch(`/api/residents/${id}`);
-    if (!response.ok) throw new Error("Resident not found");
-    const resident = await response.json();
+    try {
+        const response = await fetch(`/api/residents/${id}`);
+        if (!response.ok) throw new Error("Resident not found");
 
+        const resident = await response.json();
 
-    displayResidentHeaderInfo(resident);
+        sessionStorage.setItem('residentData', JSON.stringify(resident));
 
-
-    displayResidentDetails(resident);
-  } catch (err) {
-    console.error("Error", error);
-  }
+        displayResidentHeaderInfo(resident);
+        displayResidentDetails(resident);
+        setEditButton(resident.id);
+    } catch (error) {
+        console.error("Error loading resident:", error);
+    }
 });
 
-
 function displayResidentHeaderInfo(resident) {
-  const photo = document.getElementById('residentPhoto');
-  photo.src = `/api/residents/${resident.id}/photo`;
-  photo.onerror = () => (photo.src = '/Img/default-profile.jpg');
-  photo.alt = `${resident.firstName ?? ''} ${resident.lastName ?? ''}`;
+    const photo = document.getElementById('residentPhoto');
+    if (photo) {
+        photo.src = `/api/residents/${resident.id}/photo`;
+        photo.onerror = () => (photo.src = '/Img/default-profile.jpg');
+        photo.alt = `${resident.firstName ?? ''} ${resident.lastName ?? ''}`;
+    }
 
-  const residentsHeader = document.querySelector('.residentHeaderInfo');
-  residentsHeader.innerHTML = '';
+    const headerContainer = document.querySelector('.residentHeaderInfo');
+    if (!headerContainer) return;
 
-  const name = document.createElement('div');
-  name.classList.add('residentName');
-  name.textContent = `${resident.firstName ?? ''} ${resident.middleName ?? ''} ${resident.lastName ?? ''}`.trim();
+    headerContainer.innerHTML = '';
 
-  const age = document.createElement('div');
-  age.classList.add('residentAge');
-  age.textContent = `Age: ${resident.age ?? 'N/A'} yrs old`;
+    const name = document.createElement('div');
+    name.classList.add('residentName');
+    name.textContent = `${resident.firstName ?? ''} ${resident.middleName ?? ''} ${resident.lastName ?? ''}`.trim();
 
-  const sitio = document.createElement('div');
-  sitio.classList.add('residentSitio');
-  sitio.textContent = `Sitio: ${resident.sitio ?? 'N/A'}`;
+    const age = document.createElement('div');
+    age.classList.add('residentAge');
+    age.textContent = `Age: ${resident.age ?? 'N/A'} yrs old`;
 
-  residentsHeader.append(name, age);
+    headerContainer.append(name, age);
 }
 
 
 function displayResidentDetails(resident) {
-  document.querySelector("#residentSex").textContent = resident.sex ?? "";
-  document.querySelector("#residentOccupation").textContent = resident.occupation ?? "";
-  document.querySelector("#residentSitio").textContent = resident.sitio ?? "";
-  document.querySelector("#residentVoterStatus").textContent = resident.voterstatus ?? "";
-  document.querySelector("#residentBirthDate").textContent = resident.birthdate ?? "";
-  document.querySelector("#residentCivilStatus").textContent = resident.civilstatus ?? "";
-  document.querySelector("#residentHouseholdMembers").textContent = resident.household ?? "";
-  document.querySelector("#residentContact").textContent = resident.contactnumber ?? "";
-  document.querySelector("#residentBloodType").textContent = resident.bloodtype ?? "";
-  document.querySelector("#residentEmail").textContent = resident.email ?? "";
-  document.querySelector("#residentEducationalAttainment").textContent = resident.education ?? "";
-  document.querySelector("#residentReligion").textContent = resident.religion ?? "";
-  document.querySelector("#residentPWD").textContent = resident.pwd ? "Yes" : "No";
-  document.querySelector("#residentSuffix").textContent = resident.suffix ?? "";
-  document.querySelector("#residentSenior").textContent = resident.senior ? "Yes" : "No";
-  document.querySelector("#residentCondition").textContent = resident.condition ?? "";
+    const setText = (selector, value) => {
+        const el = document.querySelector(selector);
+        if (el) el.textContent = value ?? "";
+    };
+
+    setText("#residentSex", resident.sex);
+    setText("#residentOccupation", resident.occupation);
+    setText("#residentSitio", resident.sitio);
+    setText("#residentVoterStatus", resident.voterstatus);
+    setText("#residentBirthDate", resident.birthdate);
+    setText("#residentCivilStatus", resident.civilstatus);
+    setText("#residentHouseholdMembers", resident.household);
+    setText("#residentContact", resident.contactnumber);
+    setText("#residentBloodType", resident.bloodtype);
+    setText("#residentEmail", resident.email);
+    setText("#residentEducationalAttainment", resident.education);
+    setText("#residentReligion", resident.religion);
+    setText("#residentPWD", resident.pwd ? "Yes" : "No");
+    setText("#residentSuffix", resident.suffix);
+    setText("#residentSenior", resident.senior ? "Yes" : "No");
+    setText("#residentCondition", resident.condition);
+}
+
+
+function setEditButton(id) {
+    const editBtn = document.getElementById('residentEditPage');
+    if (!editBtn) return;
+
+    editBtn.dataset.residentId = id;
+
+    editBtn.onclick = () => {
+        window.location.href = `/editresident?id=${id}`;
+    };
 }
