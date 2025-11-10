@@ -112,7 +112,7 @@ public class Resident {
     @Getter
     @Setter
     @Column(name = "senior")
-    private Boolean senior;
+    private boolean senior;
 
     @Getter
     @Setter
