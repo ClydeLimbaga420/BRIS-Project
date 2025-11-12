@@ -17,7 +17,7 @@
         <h3>REPORTING PERSON DATA</h3>
 
         <form id="reportForm" th:action="@{/blotter/add}" method="post">
-        <div class="form-layout">
+            <div class="form-layout">
                 <div class="left-section">
                     <label>Complainant Full Name:</label>
                     <div class="triple-inputs">
@@ -29,7 +29,7 @@
                     <div class="double-inputs">
                         <div>
                             <label>Contact:</label>
-                            <input type="text" id="c_contact" name="Ccontact" />
+                            <input type="text" id="c_contact" name="Ccontact" minlength="11" maxlength="11"/>
                         </div>
                         <div>
                             <label>Age:</label>
@@ -50,7 +50,7 @@
                     <div class="double-inputs">
                         <div>
                             <label>Contact:</label>
-                            <input type="text" id="r_contact"  name="Rcontact"/>
+                            <input type="text" id="r_contact"  name="Rcontact" minlength="11" maxlength="11"/>
                         </div>
                         <div>
                             <label>Age:</label>
@@ -77,10 +77,9 @@
                         <div>
                             <label>Status:</label>
                             <select id="status" required name="status">
-                                <option value="">Select...</option>
                                 <option value="Pending">Pending</option>
-                                <option value="Settled">Settled</option>
-                                <option value="Ongoing">Ongoing</option>
+                                <option value="Resolved">Resolved</option>
+                                <option value="Ongoing">Active</option>
                             </select>
                         </div>
                     </div>
@@ -96,7 +95,6 @@
                         </div>
                     </div>
                 </div>
-
 
                 <div class="right-section">
                     <div>
