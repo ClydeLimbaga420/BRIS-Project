@@ -147,6 +147,10 @@ form {
   cursor: pointer;
 }
 
+#input-age {
+width: 130px;
+box-sizing: border-box;
+}
 #Footer {
   height:31px;
   width:100%;
