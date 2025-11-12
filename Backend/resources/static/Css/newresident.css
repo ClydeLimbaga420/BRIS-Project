@@ -19,7 +19,6 @@ body {
   gap:64%;
 }
 
-
 #header .residentp {
   margin:0;
   padding-top:1%;
@@ -106,15 +105,11 @@ form {
 
 .select-education {
   width: 288px;
-}
-
-.select-condition{
-  width:125px;
-  margin-right:1000px;
+  margin-right: 10000px;
 }
 
 .select-blood {
-  width: 100px;
+  width: 105px;
 }
 
 .checkbox-group label {
@@ -126,9 +121,9 @@ form {
 .buttons {
   display: flex;
   justify-content: flex-end;
-  gap: 20px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  gap: 10px;
+  margin-left: 90%;
+  margin-bottom: 5%;
 }
 
 .cancel {
@@ -151,19 +146,8 @@ form {
   cursor: pointer;
 }
 
-.profile-picture {
-  width: 150px;
-  height: 150px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background-color: #f8f8f8;
-}
 #Footer {
-height: 31px;
-width: 100%;
-background: #4B5563
+  height:31px;
+  width:100%;
+  background:#4B5563;
 }
