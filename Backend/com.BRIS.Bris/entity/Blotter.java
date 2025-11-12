@@ -23,17 +23,17 @@ public class Blotter {
     @Getter
     @Setter
     @Column(name = "complainant_middle_name")
-    private String omplainantMiddleName;
+    private String complainantMiddleName;
 
     @Getter
     @Setter
     @Column(name = "complainant_last_name")
-    private String omplainantLastName;
+    private String complainantLastName;
 
     @Getter
     @Setter
     @Column(name = "complainant_age")
-    private String omplainantAge;
+    private String complainantAge;
 
     @Setter
     @Getter
@@ -114,3 +114,4 @@ public class Blotter {
 
 
 }
+
