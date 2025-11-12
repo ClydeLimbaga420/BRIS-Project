@@ -1,5 +1,9 @@
 document.getElementById("backBtn").addEventListener("click", () => {
-  window.history.back();
+if(!document.referrer){
+  history.back();
+  } else {
+  window.location.href="homepage";
+}
 });
 
 

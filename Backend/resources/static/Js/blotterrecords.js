@@ -18,24 +18,30 @@ function renderBlotters(blottersData) {
     const info = document.createElement('div');
     info.classList.add('blottersInfo');
 
-
     info.addEventListener("click", () => {
-      window.location.href = `/blotter/${blotter.id}`;
+      if (blotter.id) {
+        window.location.href = `/blotterinfo?id=${blotter.id}`;
+      } else {
+        console.error("Missing blotter ID:", blotter);
+      }
     });
 
     const details = document.createElement('div');
     details.classList.add('blotterDetails');
 
+    details.innerHTML = `
+      <span class="caseNo">Case No. ${blotter.caseNo || "—"}</span>
+      <span class="blotterName">${blotter.blotteredFirstName || ""} ${blotter.blotteredLastName || ""}</span>
+      <span class="blotterStatus">
+        Status: ${blotter.blotterStatus?.status || blotter.blotterStatus || "N/A"}
+      </span>
+    `;
 
-    details.innerHTML = `<span class="caseNo">Case No. ${blotter.caseNo}</span>
-      <span class="blotterName">${blotter.blotteredFirstName} ${blotter.blotteredLastName}</span>
-      <span class="blotterStatus">Status: ${blotter.blotterStatus}</span>`;
 
     info.append(details);
     boxInfo.append(info);
   });
 }
-
 
 const searchInput = document.querySelector('.search');
 const searchButton = document.querySelector('.serbot');
