@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/blotter")
@@ -34,4 +35,23 @@ public class BlotterController {
                 })
                 .toList();
     }
+
+    @GetMapping("/{id}")
+    public Blotter getBlotterById(@PathVariable Long id) {
+        return blotterRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Blotter record not found"));
+    }
+
+    @PutMapping("/{id}/status")
+    public Blotter updateStatus(@PathVariable Long id, @RequestBody Map<String, String> payload) {
+        Blotter blotter = blotterRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Record not found"));
+        blotter.setBlotterStatus(payload.get("status"));
+        return blotterRepository.save(blotter);
+    }
+
+
+
+
+
 }

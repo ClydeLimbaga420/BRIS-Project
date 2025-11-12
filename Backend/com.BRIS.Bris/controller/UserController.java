@@ -103,6 +103,14 @@ public class UserController {
         session.invalidate();
         return "redirect:/login?logout";
     }
+    @Controller
+    public class blotterInfoCon {
+        @GetMapping("/blotterinfo")
+        public String blotterinfo() {
+            return "blotterinfo";
+        }
+    }
+
 
 
 
