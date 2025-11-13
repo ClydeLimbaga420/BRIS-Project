@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!response.ok) throw new Error("Resident not found");
         const resident = await response.json();
 
-        // Fill form fields
         document.querySelector("#input_lastname").value = resident.lastName || "";
         document.querySelector("#input_firstname").value = resident.firstName || "";
         document.querySelector("#input_middlename").value = resident.middleName || "";
@@ -32,7 +31,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.querySelector("#input-age").value = resident.age || "";
         document.querySelector("input[type=checkbox]").checked = resident.pwd || false;
 
-        // Photo preview
         const photoPreview = document.getElementById("photoPreview");
         const img = document.createElement("img");
         img.src = `/api/residents/${id}/photo`;
@@ -45,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         console.error("Error loading resident:", err);
     }
 
-    // Age calculation
     const birthInput = document.getElementById("input_birthdate");
     const ageInput = document.getElementById("input-age");
     const seniorInput = document.getElementById("seniorStatus");
@@ -63,8 +60,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     calculateAge();
     birthInput.addEventListener("change", calculateAge);
 
-    // File preview
     const fileInput = document.getElementById('fileUpload');
+    const photoPreview = document.getElementById("photoPreview");
     fileInput.addEventListener('change', function() {
         const file = this.files[0];
         if (file) {
@@ -86,7 +83,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     });
 
-    // Submit edited data
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const updatedResident = {
@@ -120,6 +116,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
             if (response.ok) {
+
+
+                const file = document.getElementById('fileUpload').files[0];
+                if (file) {
+                    const formData = new FormData();
+                    formData.append("photo", file);
+                    await fetch(`/api/residents/${id}/photo`, {
+                        method: "PUT",
+                        body: formData
+                    });
+                }
+
+
                 alert("Resident updated successfully!");
                 window.location.href = `/residentsinfo?id=${id}`;
             } else {
