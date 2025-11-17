@@ -60,7 +60,7 @@
         <div class="form-group">
             <label for="select_sex">Sex</label>
             <select id="select_sex" th:field="*{sex}" required>
-                <option value="" th:selected="${resident.sex == null}">Select</option>
+                <option disabled selected value="" th:selected="${resident.sex == null}">Select</option>
                 <option value="Male" th:selected="${resident.sex == 'Male'}">Male</option>
                 <option value="Female" th:selected="${resident.sex == 'Female'}">Female</option>
             </select>
@@ -78,7 +78,7 @@
         <div class="form-group">
             <label for="input_status">Civil Status</label>
             <select id="input_status" th:field="*{civilstatus}" required>
-                <option value="" th:selected="${resident.civilstatus == null}">Select</option>
+                <option disabled selected value="" th:selected="${resident.civilstatus == null}">Select</option>
                 <option value="Single" th:selected="${resident.civilstatus == 'Single'}">Single</option>
                 <option value="Married" th:selected="${resident.civilstatus == 'Married'}">Married</option>
                 <option value="Widow" th:selected="${resident.civilstatus == 'Widow'}">Widow</option>
@@ -110,7 +110,7 @@
         <div class="form-group">
             <label for="select_voterstatus">Voter Status</label>
             <select id="select_voterstatus" th:field="*{voterstatus}" required>
-                <option value="" th:selected="${resident.voterstatus == null}">Select</option>
+                <option disabled selected value="" th:selected="${resident.voterstatus == null}">Select</option>
                 <option value="Registered" th:selected="${resident.voterstatus == 'Registered'}">Registered</option>
                 <option value="Not Registered" th:selected="${resident.voterstatus == 'Not Registered'}">Not Registered</option>
             </select>
@@ -136,7 +136,7 @@
 
     <br>
 
-    <div class="form-row">
+    <div class="info-row">
         <div class="form-group checkbox-group">
             <label>PWD
                 <input type="checkbox" th:field="*{pwd}" th:checked="${resident.pwd}">
@@ -145,7 +145,7 @@
         <div class="form-group">
             <label for="select_bloodtype">Blood Type</label>
             <select id="select_bloodtype" th:field="*{bloodtype}" required>
-                <option value="" th:selected="${resident.bloodtype == null}">Select</option>
+                <option disabled selected value="" th:selected="${resident.bloodtype == null}">Select</option>
                 <option value="A" th:selected="${resident.bloodtype == 'A'}">A</option>
                 <option value="A+" th:selected="${resident.bloodtype == 'A+'}">A+</option>
                 <option value="A-" th:selected="${resident.bloodtype == 'A-'}">A-</option>
