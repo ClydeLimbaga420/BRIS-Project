@@ -152,19 +152,9 @@
    font-weight:bold;
 }
 
-
   #currentResidents:hover > .currentResidents{
     opacity:1;
   }
-
-
-
-
-
-
-
-
-
 
   #residentsBlotterRecords {
     position:relative;
@@ -194,21 +184,9 @@
 
 }
 
-
   #residentsBlotterRecords:hover > .residentsBlotterRecords{
     opacity:1;
   }
-
-
-
-
-
-
-
-
-
-
-
 
   #icon1, #icon2, #icon3, #icon4, #icon5 {
     background:#DBEAFE;
@@ -256,7 +234,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 40px;
-
   }
 
   button{

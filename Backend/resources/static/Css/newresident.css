@@ -79,8 +79,6 @@ body {
   flex: 1;
 }
 
-
-
 label {
   margin-bottom: 6px;
   font-size: 14px;
@@ -92,7 +90,7 @@ input[type="text"], input[type="number"], input[type="date"], input[type="tel"],
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      outline: none;
+
 }
 
 input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="tel"]:focus, input[type="email"]:focus, select:focus {
@@ -137,13 +135,17 @@ form {
 }
 
 .save {
-  background-color: #0c1e4a;
+  background-color: #208AAE;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
+  transition: 0.2s;
+}
+.save:hover {
+background-color: #122b5c;
 }
 
 #Footer {

@@ -93,7 +93,7 @@ input[type="text"], input[type="number"], input[type="date"], input[type="tel"],
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 8px;
-      outline: none;
+      
 }
 
 input[type="text"]:focus, input[type="number"]:focus, input[type="date"]:focus, input[type="tel"]:focus, input[type="email"]:focus, select:focus {
@@ -119,6 +119,25 @@ form {
   gap: 6px;
 }
 
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.info-row .form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.info-row .checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
 .buttons {
   display: flex;
   justify-content: flex-end;
@@ -138,13 +157,17 @@ form {
 }
 
 .save {
-  background-color: #0c1e4a;
+  background-color: #208AAE;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 6px;
   font-size: 16px;
   cursor: pointer;
+  transition: 0.2s;
+}
+.save:hover {
+background-color: #122b5c;
 }
 
 #input-age {
