@@ -24,7 +24,6 @@ function displayResidentHeaderInfo(resident) {
     if (photo) {
         photo.src = `/api/residents/${resident.id}/photo`;
         photo.onerror = () => (photo.src = '/Img/default-profile.jpg');
-        photo.alt = `${resident.firstName ?? ''} ${resident.lastName ?? ''}`;
     }
 
     const headerContainer = document.querySelector('.residentHeaderInfo');

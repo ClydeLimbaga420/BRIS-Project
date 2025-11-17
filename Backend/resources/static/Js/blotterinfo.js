@@ -47,7 +47,7 @@ function renderInfo(record) {
 
   const statusEl = document.getElementById('status');
   let statusValue = record.blotterStatus ? record.blotterStatus.trim().toLowerCase() : "";
-  statusEl.classList.remove("pending", "resolved", "ongoing");
+  statusEl.classList.remove("pending", "resolved", "active");
   if (statusValue === "pending") statusEl.classList.add("pending");
   if (statusValue === "resolved") statusEl.classList.add("resolved");
   if (statusValue === "active") statusEl.classList.add("active");
