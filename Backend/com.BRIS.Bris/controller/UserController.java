@@ -3,6 +3,7 @@ package com.BRIS.Login.controller;
 import com.BRIS.Login.entity.User;
 import com.BRIS.Login.service.UserService;
 import com.BRIS.Login.service.UpdateService;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -16,21 +17,35 @@ public class UserController {
     private final UserService userService;
     private final UpdateService updateService;
 
+    private boolean isLoggedIn(HttpSession session) {
+        return session != null && session.getAttribute("user") != null;
+    }
+
+    private void preventCaching(HttpServletResponse response) {
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+        response.setHeader("Pragma", "no-cache");
+        response.setHeader("Expires", "0");
+    }
+
+
     @GetMapping("/")
-    public String loginPage() {
+    public String loginPage(HttpSession session, Model model,
+                            @RequestParam(value = "logout", required = false) String logout) {
+        if (session != null) session.invalidate();
+        if (logout != null) model.addAttribute("logoutMsg", "You have successfully logged out.");
         return "login";
     }
 
+
     @PostMapping("/login")
-    public String loginSubmit(@RequestParam("gmail_account") String gmailAccount,
-                              @RequestParam("password") String password,
-                              Model model) {
+    public String loginSubmit(@RequestParam String gmail_account,
+                              @RequestParam String password,
+                              HttpSession session, Model model) {
 
-        User user = userService.login(gmailAccount, password);
-
+        User user = userService.login(gmail_account, password);
         if (user != null) {
+            session.setAttribute("user", user);
             updateService.updateData();
-            model.addAttribute("gmailAccount", user.getGmailAccount());
             return "redirect:/homepage";
         } else {
             model.addAttribute("error", "Invalid gmail account or password");
@@ -38,81 +53,74 @@ public class UserController {
         }
     }
 
-    @GetMapping("/homepage")
-    public String homepage() {
-        return "homepage";
-    }
-    @Controller
-    public class userGuideCon {
-        @GetMapping("/userguide")
-        public String userGuide() {
-            return "userGuide";
-        }
-    }
-    @Controller
-    public class historyCon {
-        @GetMapping("/history")
-        public String history() {
-            return "history";
-        }
-    }
-    @Controller
-    public class logOutCon {
-        @GetMapping("/login")
-        public String logout() {
-            return "login";
-        }
-    }
-    @Controller
-    public class addResidentCon {
-        @GetMapping("/newresident")
-        public String newResident() {
-            return "newresident";
-        }
-    }
-    @Controller
-    public class residentsRecordsCon {
-        @GetMapping("/residentsrecords")
-        public String residentsRecords() {
-            return "residentsrecords";
-        }
-    }
-    @Controller
-    public class blotterRecordsCon {
-        @GetMapping("/blotterrecords")
-        public String blotterRecords() {
-            return "blotterrecords";
-        }
-    }
-    @Controller
-    public class reportCaseCon {
-        @GetMapping("/reportcase")
-        public String reportCase() {
-            return "reportcase";
-        }
-    }
-    @Controller
-    public class certificatesCon {
-        @GetMapping("/certificates")
-        public String certificates() {
-            return "certificates";
-        }
-    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/login?logout";
-    }
-    @Controller
-    public class blotterInfoCon {
-        @GetMapping("/blotterinfo")
-        public String blotterinfo() {
-            return "blotterinfo";
-        }
+        if (session != null) session.invalidate();
+        return "redirect:/?logout";
     }
 
 
+    @GetMapping("/homepage")
+    public String homepage(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "homepage";
+    }
 
+    @GetMapping("/userguide")
+    public String userGuide(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "userGuide";
+    }
 
+    @GetMapping("/history")
+    public String history(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "history";
+    }
 
+    @GetMapping("/newresident")
+    public String newResident(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "newresident";
+    }
+
+    @GetMapping("/residentsrecords")
+    public String residentsRecords(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "residentsrecords";
+    }
+
+    @GetMapping("/blotterrecords")
+    public String blotterRecords(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "blotterrecords";
+    }
+
+    @GetMapping("/reportcase")
+    public String reportCase(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "reportcase";
+    }
+
+    @GetMapping("/certificates")
+    public String certificates(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "certificates";
+    }
+
+    @GetMapping("/blotterinfo")
+    public String blotterInfo(HttpSession session, HttpServletResponse response) {
+        if (!isLoggedIn(session)) return "redirect:/";
+        preventCaching(response);
+        return "blotterinfo";
+    }
 }
