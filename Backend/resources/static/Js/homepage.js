@@ -36,7 +36,7 @@ logout.addEventListener("click", () => {
   window.removeEventListener("popstate", blockBackNavigation);
 
 
-  window.location.replace("/login");
+  window.location.href = "/logout";
 });
 
 
