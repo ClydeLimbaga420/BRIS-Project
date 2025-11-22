@@ -2,6 +2,7 @@ package com.BRIS.Login.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "user_login")
@@ -18,4 +19,10 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Column(name = "resetToken")
+    private String resetToken;
+
+    @Column(name = "token_expiry")
+    private LocalDateTime tokenExpiry;
 }
