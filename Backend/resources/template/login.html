@@ -22,14 +22,17 @@
 
         <p th:if="${error}" th:text="${error}" style="color:red;"></p>
         <button type="submit">Login</button>
-        <div class = "options">
-            <a href="/signup">
-            <p>Sign Up</p>
-            </a>
-            <p>Forgot Password</p>
+    </form>
+
+    <div class = "options">
+
+        <a th:href="@{/signup}">Sign Up</a>
+        <a th:href="@{/forgotpassword}">Forgot Password</a>
+
+
         </div>
 
-    </form>
+
 
 
 </div>
